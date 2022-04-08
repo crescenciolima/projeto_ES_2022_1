@@ -59,7 +59,7 @@ Run project
 
 Contributors
 ---------------------------
-Brendon Lima, Caroline Araújo, Felipe Rocha, Nicássio Couto, Crescencio Lima @cretchas.
+Brendon Lima, Caroline Araújo, Felipe Rocha, Nicássio Couto, Crescencio Lima <a href="www.crescenciolima.com" target = "blank">@cretchas</a>.
 
 License
 ---------------------------
