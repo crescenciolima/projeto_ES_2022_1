@@ -8,20 +8,21 @@ Os vídeos com as gravações dos encontros síncronos realizados durante o per�
 License:<a href="http://www.gnu.org/licenses/gpl.html" target="blank"> GNU GPL v3</a><br>
 Content License: <a href="https://creativecommons.org/licenses/by/3.0/" target = "blank">Creative Commons 3.0 BY</a>
 
-#Engenharia de Software
-**Participantes :**<br>
+# Engenharia de Software
+
+** Participantes :**<br>
 Brendon Lima<br>
 Caroline Araújo<br>
 Felipe Rocha<br>
 Nicássio Couto<br>
 Crescencio Lima<br>
 
-#Versão dos pacotes utilizados<br>
+# Versão dos pacotes utilizados<br>
 * TBD<br>
 * TBD<br>
 
 
-#Nome_do_Projeto
+# Nome_do_Projeto
 
 Introduction
 ------------
