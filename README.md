@@ -3,7 +3,9 @@ Repositório dedicado para o desenvolvimento do projeto da Disciplina de Engenha
 
 Neste repositório você vai encontrar os códigos produzidos para o projeto da disciplina Engenharia de Software do Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) campus Vitória da Conquista semestre 2022.1 do curso Bacharelado em Sistemas de Informação (noturno).
 
-Os vídeos com as gravações dos encontros síncronos realizados durante o período de modalidade de Atividades de Ensino Não Presenciais Emergenciais (AENPE) podem ser encontrados no link a seguir: [Canal YouTube](https://www.youtube.com/c/CrescencioLima). 
+Os vídeos com as gravações dos encontros síncronos realizados durante o período de modalidade de Atividades de Ensino Não Presenciais Emergenciais (AENPE) podem ser encontrados no link a seguir:
+
+[![crescencio-lima](https://img.shields.io/badge/crescencio--lima-channel-green?colorA=ef5350&colorB=d32f2f&style=for-the-badge)](https://www.youtube.com/c/CrescencioLima/) 
 
 # Engenharia de Software
 
