@@ -5,9 +5,6 @@ Neste repositório você vai encontrar os códigos produzidos para o projeto da 
 
 Os vídeos com as gravações dos encontros síncronos realizados durante o período de modalidade de Atividades de Ensino Não Presenciais Emergenciais (AENPE) podem ser encontrados no link a seguir: [Canal YouTube](https://www.youtube.com/c/CrescencioLima). 
 
-License:<a href="http://www.gnu.org/licenses/gpl.html" target="blank"> GNU GPL v3</a><br>
-Content License: <a href="https://creativecommons.org/licenses/by/3.0/" target = "blank">Creative Commons 3.0 BY</a>
-
 # Engenharia de Software
 
 **Participantes :**<br>
