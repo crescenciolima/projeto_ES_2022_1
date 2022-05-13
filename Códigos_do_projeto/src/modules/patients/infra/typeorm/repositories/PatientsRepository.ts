@@ -13,7 +13,7 @@ class PatientsRepository implements IPatientsRepository {
     this.repository = getRepository(Patient)
   }
 
-  async create({ name, ethnicity, nationality, cpf, birth_date, marital_status, address, state, city, gender, phone_number, id }: ICreatePatientDTO): Promise<void> {
+  async create({ name, ethnicity, nationality, cpf, birth_date, marital_status, address, state, city, gender, phone_number, id }: ICreatePatientDTO): Promise<Patient> {
     const patient = this.repository.create({
       name,
       ethnicity,
@@ -30,6 +30,7 @@ class PatientsRepository implements IPatientsRepository {
     })
 
     await this.repository.save(patient)
+    return patient
   }
 
   async updateUser(id: string, data: IUpdatePatientDTO): Promise<void> {
