@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IPatientsRepository } from "@modules/patients/repositories/IPatientsRepository";
 import { AppError } from "@shared/errors/AppError";
-import { Patient } from "@modules/patients/infra/typeorm/entities/Patient";
 
 @injectable()
 class DeletePatientUseCase {

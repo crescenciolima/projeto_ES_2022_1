@@ -23,7 +23,7 @@ class UpdatePatientUseCase {
       gender: data?.gender,
       phone_number: data?.phone_number
     }
-    await this.patientesRepository.updateUser(id, data)
+    await this.patientesRepository.updatePatient(id, data)
   }
 }
 

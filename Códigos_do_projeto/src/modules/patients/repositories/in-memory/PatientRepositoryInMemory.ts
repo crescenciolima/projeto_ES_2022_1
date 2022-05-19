@@ -27,7 +27,7 @@ class PatientsRepositoryInMemory implements IPatientsRepository {
     this.patients.push(patient)
     return patient
   }
-  updateUser(id: string, data: IUpdatePatientDTO): Promise<void> {
+  updatePatient(id: string, data: IUpdatePatientDTO): Promise<void> {
     throw new Error("Method not implemented.");
   }
   delete(id: string): Promise<void> {

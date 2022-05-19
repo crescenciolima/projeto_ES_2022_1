@@ -4,7 +4,7 @@ import { ListPatientsUseCase } from "./ListPatientsUseCase"
 let listPatientsUseCase: ListPatientsUseCase
 let patientsRepositoryInMemory: PatientsRepositoryInMemory
 
-describe("List Patients", () => {
+describe("List patients", () => {
   beforeEach(() => {
     patientsRepositoryInMemory = new PatientsRepositoryInMemory()
     listPatientsUseCase = new ListPatientsUseCase(patientsRepositoryInMemory)
