@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreatePatients1651761081705 implements MigrationInterface {
+export class CreateMedics1652745589918 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "patients",
+        name: "medics",
         columns: [
           {
             name: "id",
@@ -14,15 +14,22 @@ export class CreatePatients1651761081705 implements MigrationInterface {
           },
           {
             name: "name",
-            type: "varchar"
+            type: "varchar",
           },
           {
             name: "ethnicity",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
           },
           {
             name: "nationality",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
+          },
+          {
+            name: "crm",
+            type: "varchar",
+            isUnique: true
           },
           {
             name: "cpf",
@@ -30,32 +37,45 @@ export class CreatePatients1651761081705 implements MigrationInterface {
             isUnique: true
           },
           {
-            name: "birth_date",
-            type: "Date"
+            name: "password",
+            type: "varchar",
           },
           {
             name: "marital_status",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
+          },
+          {
+            name: "birth_date",
+            type: "Date",
           },
           {
             name: "address",
-            type: "varchar"
-          },
-          {
-            name: "state",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
           },
           {
             name: "city",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
+          },
+          {
+            name: "state",
+            type: "varchar",
+            isNullable: true
           },
           {
             name: "gender",
-            type: "varchar"
+            type: "varchar",
+          },
+          {
+            name: "especialization",
+            type: "varchar",
           },
           {
             name: "phone_number",
-            type: "varchar"
+            type: "varchar",
+            isNullable: true
           },
           {
             name: "created_at",
@@ -73,7 +93,7 @@ export class CreatePatients1651761081705 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("patients")
+    await queryRunner.dropTable("medics")
   }
 
 }

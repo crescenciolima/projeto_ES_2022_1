@@ -4,8 +4,8 @@ import { Patient } from "../infra/typeorm/entities/Patient";
 
 
 interface IPatientsRepository {
-  create(data: ICreatePatientDTO): Promise<void>;
-  updateUser(id: string, data: IUpdatePatientDTO): Promise<void>
+  create(data: ICreatePatientDTO): Promise<Patient>;
+  updatePatient(id: string, data: IUpdatePatientDTO): Promise<void>
   delete(id: string): Promise<void>;
   getAll(): Promise<Patient[]>
   findById(id: string): Promise<Patient>
