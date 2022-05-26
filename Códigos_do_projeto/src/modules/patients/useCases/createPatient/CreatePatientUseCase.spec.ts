@@ -1,4 +1,4 @@
-import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientRepositoryInMemory"
+import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory"
 import { AppError } from "@shared/errors/AppError"
 import { CreatePatientUseCase } from "./CreatePatientUseCase"
 
@@ -17,7 +17,7 @@ describe("Create a patient", () => {
       ethnicity: "test",
       nationality: "test",
       cpf: "121212",
-      birth_date: "2022-12-12",
+      birth_date: new Date("2022-12-12 00:00:00"),
       marital_status: "test",
       address: "test",
       state: "test",
@@ -34,7 +34,7 @@ describe("Create a patient", () => {
       ethnicity: "test1",
       nationality: "test1",
       cpf: "123456",
-      birth_date: "2022-12-12",
+      birth_date: new Date("2022-12-12 00:00:00"),
       marital_status: "test1",
       address: "test1",
       state: "test1",
@@ -47,7 +47,7 @@ describe("Create a patient", () => {
       ethnicity: "test2",
       nationality: "test2",
       cpf: "123456",
-      birth_date: "2022-12-12",
+      birth_date: new Date("2022-12-12 00:00:00"),
       marital_status: "test2",
       address: "test2",
       state: "test2",

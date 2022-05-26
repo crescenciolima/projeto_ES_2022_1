@@ -23,7 +23,7 @@ class MedicsTokenRepository implements IMedicsTokensRepository {
     return medicToken
   }
 
-  async findByUserIdAndRefreshToken(medic_id: string, refresh_token: string): Promise<MedicTokens> {
+  async findByMedicIdAndRefreshToken(medic_id: string, refresh_token: string): Promise<MedicTokens> {
     const medicsTokens = await this.repository.findOne({ medic_id, refresh_token })
     return medicsTokens
   }

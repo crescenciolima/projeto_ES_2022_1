@@ -1,6 +1,6 @@
+import { Router } from "express";
 import { AuthenticateMedicController } from "@modules/medics/useCases/authenticateMedic/AuthenticateMedicController";
 import { RefreshTokenController } from "@modules/medics/useCases/refreshToken/RefreshTokenController";
-import { Router } from "express";
 
 const authenticateRoutes = Router()
 

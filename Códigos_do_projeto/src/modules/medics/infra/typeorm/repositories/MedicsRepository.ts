@@ -34,7 +34,7 @@ class MedicsRepository implements IMedicsRepository {
     return medic
   }
 
-  async updateMedic(id: string, data: IUpdateMedicDTO): Promise<void> {
+  async updateMedic(id: string, data: IUpdateMedicDTO): Promise<Medic> {
     await this.repository.update(id, {
       name: data.name,
       nationality: data.nationality,
@@ -51,13 +51,15 @@ class MedicsRepository implements IMedicsRepository {
       especialization: data.especialization,
       phone_number: data.phone_number,
     })
+    const medic = await this.repository.findOne({ id })
+    return medic
   }
 
   async delete(id: string): Promise<void> {
     const medic = await this.repository.findOne({ id })
 
     if (!medic) {
-      throw new AppError("User does not exist")
+      throw new AppError("Medic does not exist")
     }
 
     await this.repository.delete(id)

@@ -1,4 +1,4 @@
-import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientRepositoryInMemory"
+import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory"
 import { ListPatientsUseCase } from "./ListPatientsUseCase"
 
 let listPatientsUseCase: ListPatientsUseCase
@@ -16,7 +16,7 @@ describe("List patients", () => {
       ethnicity: "test",
       nationality: "test",
       cpf: "121212",
-      birth_date: "2022-12-12",
+      birth_date: new Date("2022-12-12 00:00:00"),
       marital_status: "test",
       address: "test",
       state: "test",

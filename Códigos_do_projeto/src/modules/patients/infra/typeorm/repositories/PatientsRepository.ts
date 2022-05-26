@@ -33,7 +33,7 @@ class PatientsRepository implements IPatientsRepository {
     return patient
   }
 
-  async updatePatient(id: string, data: IUpdatePatientDTO): Promise<void> {
+  async updatePatient(id: string, data: IUpdatePatientDTO): Promise<Patient> {
     await this.repository.update(id, {
       name: data.name,
       ethnicity: data.ethnicity,
@@ -47,13 +47,15 @@ class PatientsRepository implements IPatientsRepository {
       gender: data.gender,
       phone_number: data.phone_number
     })
+    const patient = await this.repository.findOne({ id })
+    return patient
   }
 
   async delete(id: string): Promise<void> {
     const patient = await this.repository.findOne({ id })
 
     if (!patient) {
-      throw new AppError("User does not exist")
+      throw new AppError("Patient does not exist")
     }
 
     await this.repository.delete(id)

@@ -29,7 +29,7 @@ class RefreshTokenUseCase {
 
     const medic_id = sub
 
-    const medicToken = await this.medicsTokensRepository.findByUserIdAndRefreshToken(medic_id, token)
+    const medicToken = await this.medicsTokensRepository.findByMedicIdAndRefreshToken(medic_id, token)
 
     if (!medicToken) {
       throw new AppError("Refresh Token does not exists!")

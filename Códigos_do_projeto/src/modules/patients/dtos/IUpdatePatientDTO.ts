@@ -4,7 +4,7 @@ interface IUpdatePatientDTO {
   ethnicity?: string
   nationality?: string
   cpf: string
-  birth_date: string
+  birth_date: Date
   marital_status?: string
   address?: string
   state?: string

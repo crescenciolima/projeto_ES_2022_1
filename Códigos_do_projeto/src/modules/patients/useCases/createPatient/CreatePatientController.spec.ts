@@ -17,13 +17,13 @@ describe("Create a patient", () => {
 
     await connection.query(
       `INSERT INTO MEDICS(id, name, ethnicity, nationality, crm, cpf, password, marital_status, birth_date, address, city, state, gender, especialization, phone_number, created_at, updated_at)
-      values('${id}', 'Medico 1', 'Pardo', 'Brasileiro', 'abc123', '12345678910', '${password}', 'Solteiro', '2000-01-01', 'Rua 1', 'Cidade 1', 'Estado 1', 'Masculino', 'Cardiologista', '12345678900', now(), null)`
+      values('${id}', 'Medico 1', 'Pardo', 'Brasileiro', 'abc123', '12345678910', '${password}', 'Solteiro', '2000-01-01 00:00:00', 'Rua 1', 'Cidade 1', 'Estado 1', 'Masculino', 'Cardiologista', '12345678900', now(), null)`
     )
   })
 
   afterAll(async () => {
     await connection.dropDatabase()
-    await connection.close
+    connection.close
   })
 
   it("should be able to create a new patient", async () => {
@@ -46,7 +46,7 @@ describe("Create a patient", () => {
         ethnicity: "test",
         nationality: "test",
         cpf: "121212",
-        birth_date: "2022-12-12",
+        birth_date: new Date("2022-12-12 00:00:00"),
         marital_status: "test",
         address: "test",
         state: "test",
