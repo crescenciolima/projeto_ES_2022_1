@@ -1,10 +1,10 @@
-import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientRepositoryInMemory"
+import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory"
 import { ListPatientsUseCase } from "./ListPatientsUseCase"
 
 let listPatientsUseCase: ListPatientsUseCase
 let patientsRepositoryInMemory: PatientsRepositoryInMemory
 
-describe("List Patients", () => {
+describe("List patients", () => {
   beforeEach(() => {
     patientsRepositoryInMemory = new PatientsRepositoryInMemory()
     listPatientsUseCase = new ListPatientsUseCase(patientsRepositoryInMemory)
@@ -16,7 +16,7 @@ describe("List Patients", () => {
       ethnicity: "test",
       nationality: "test",
       cpf: "121212",
-      birth_date: "2022-12-12",
+      birth_date: new Date("2022-12-12 00:00:00"),
       marital_status: "test",
       address: "test",
       state: "test",
