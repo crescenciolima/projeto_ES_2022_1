@@ -77,10 +77,10 @@ Contributors
 Brendon Lima, Caroline Araújo, Felipe Rocha, Nicássio Couto.
 
 [![crescencio-lima](https://img.shields.io/badge/crescencio--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/crescenciolima)
-[![brendon-lima](https://img.shields.io/badge/crescencio--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/bredbk)
-[![caroline-araújo](https://img.shields.io/badge/crescencio--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/carolineaalmeida)
-[![felipe-rocha](https://img.shields.io/badge/crescencio--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/lipe474)
-[![nicássio-couto](https://img.shields.io/badge/crescencio--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/NicassioCouto)
+[![brendon-lima](https://img.shields.io/badge/brendon--lima-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/bredbk)
+[![caroline-araújo](https://img.shields.io/badge/caroline--araujo-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/carolineaalmeida)
+[![felipe-rocha](https://img.shields.io/badge/felipe--rocha-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/lipe474)
+[![nicássio-couto](https://img.shields.io/badge/nicassio--couto-github-black?colorA=808080&colorB=000000&style=for-the-badge)](https://www.github.com/NicassioCouto)
 
 License
 ---------------------------
