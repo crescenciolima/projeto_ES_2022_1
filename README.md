@@ -17,22 +17,33 @@ Os vídeos com as gravações dos encontros síncronos realizados durante o per�
 - Crescencio Lima<br>
 
 # Versão dos pacotes utilizados<br>
-* TBD<br>
-* TBD<br>
+* bcrypt: 5.0.1,<br>
+* cors: 2.8.5,<br>
+* dayjs: 1.11.2,<br>
+* dotenv: 16.0.1,<br>
+* express: 4.18.1,<br>
+* express-async-errors: 3.1.1,<br>
+* jsonwebtoken: 8.5.1,<br>
+* pg: 8.7.3,<br>
+* reflect-metadata: 0.1.13,<br>
+* tsyringe: 4.6.0,<br>
+* typeorm: 0.2.44,<br>
+* uuid: 8.3.2<br>
 
 
-# Nome_do_Projeto
+# Star
 
 Introduction
 ------------
-TBD.
+O projeto trata-se de um sistema de gestão hospitalar. Realiza a gestão de pacientes, médicos, docentes e residentes, além da gestão de exames e pedidos de exames.
 
 
 Requirements
 ---------------------------
 
-  * TBD.
-  * TBD.
+  * Node.js
+  * Yarn
+  * PostgreSQL 4
 
 Installation 
 ---------------------------
@@ -43,17 +54,22 @@ Clone the project
 
 Install requirements
 
-        TBD.
+        yarn install
 
 Create the database
 
-        TBD.
+        yarn typeorm migration:run
+        
+Create a file "ormconfig.json" by utilizing the "ormconfig.example.json" as example
 
+Create a medic in database for run system
+
+        yarn seed:medic
 
 Run project
 ---------------------------
 
-        TBD.
+        yarn start
 
 
 Contributors
