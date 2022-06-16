@@ -1,0 +1,26 @@
+import { ICreateExamRequestDTO } from "@modules/examsRequest/dtos/ICreateExamRequestDTO";
+import { ExamRequest } from "@modules/examsRequest/infra/typeorm/entities/ExamRequest";
+import { IExamsRequestRepository } from "@modules/examsRequest/repositories/IExamsRequestRepository";
+import { inject, injectable } from "tsyringe";
+
+
+@injectable()
+class CreateExamRequestUseCase {
+  constructor(
+    @inject("ExamsRequestRepository")
+    private examsRequestRepository: IExamsRequestRepository
+  ) {}
+
+  async execute({ exams, diagnostic_hypothesis, date, patient_id }: ICreateExamRequestDTO): Promise<ExamRequest> {
+    const examRequest = await this.examsRequestRepository.create({
+      exams,
+      diagnostic_hypothesis,
+      date,
+      patient_id
+    });
+
+    return examRequest;
+  }
+}
+
+export { CreateExamRequestUseCase }

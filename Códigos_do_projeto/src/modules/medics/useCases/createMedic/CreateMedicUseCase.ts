@@ -3,23 +3,7 @@ import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepositor
 import { hash } from "bcrypt"
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
-
-interface IRequest {
-  name: string;
-  nationality?: string;
-  ethnicity?: string;
-  crm: string;
-  cpf: string;
-  password: string;
-  marital_status?: string;
-  birth_date: Date;
-  address?: string;
-  city?: string;
-  state?: string;
-  gender: string;
-  especialization: string;
-  phone_number?: string;
-}
+import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
 
 @injectable()
 class CreateMedicUseCase {
@@ -28,7 +12,7 @@ class CreateMedicUseCase {
     private medicsRepository: IMedicsRepository
   ) { }
 
-  async execute({ name, nationality, ethnicity, crm, cpf, password, marital_status, birth_date, address, city, state, gender, especialization, phone_number }: IRequest): Promise<Medic> {
+  async execute({ name, nationality, ethnicity, crm, cpf, password, marital_status, birth_date, address, city, state, gender, especialization, phone_number }: ICreateMedicDTO): Promise<Medic> {
     const medicAlreadyExistsCpf = await this.medicsRepository.findByCpf(cpf)
     if (medicAlreadyExistsCpf) {
       throw new AppError("Medic already exists!")

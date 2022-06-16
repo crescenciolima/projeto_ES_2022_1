@@ -6,16 +6,20 @@ import { UpdatePatientController } from "@modules/patients/useCases/updatePatien
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
-const patientsRoutes = Router()
+const patientsRoutes = Router();
 
-const createPatientController = new CreatePatientController()
-const listPatientsController = new ListPatientsController()
-const deletePatientController = new DeletePatientController()
-const updatePatientController = new UpdatePatientController()
+const createPatientController = new CreatePatientController();
+const listPatientsController = new ListPatientsController();
+const deletePatientController = new DeletePatientController();
+const updatePatientController = new UpdatePatientController();
 
-patientsRoutes.post("/", ensureAuthenticated, createPatientController.handle)
-patientsRoutes.get("/", ensureAuthenticated, listPatientsController.handle)
-patientsRoutes.delete("/:id", ensureAuthenticated, deletePatientController.handle)
-patientsRoutes.put("/:id", ensureAuthenticated, updatePatientController.handle)
+patientsRoutes.post("/", ensureAuthenticated, createPatientController.handle);
+patientsRoutes.get("/", ensureAuthenticated, listPatientsController.handle);
+patientsRoutes.delete(
+  "/:id",
+  ensureAuthenticated,
+  deletePatientController.handle
+);
+patientsRoutes.put("/:id", ensureAuthenticated, updatePatientController.handle);
 
-export { patientsRoutes }
+export { patientsRoutes };

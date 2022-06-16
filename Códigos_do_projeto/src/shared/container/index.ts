@@ -8,6 +8,10 @@ import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepositor
 import { MedicsRepository } from "@modules/medics/infra/typeorm/repositories/MedicsRepository";
 import { IMedicsTokensRepository } from "@modules/medics/repositories/IMedicsTokensRepository";
 import { MedicsTokenRepository } from "@modules/medics/infra/typeorm/repositories/MedicsTokensRepository";
+import { IExamsRepository } from "@modules/exams/repositories/IExamsRepository";
+import { ExamsRepository } from "@modules/exams/infra/typeorm/repositories/ExamRepository";
+import { IExamsRequestRepository } from "@modules/examsRequest/repositories/IExamsRequestRepository";
+import { ExamsRequestRepository } from "@modules/examsRequest/infra/typeorm/repositories/ExamsRequestRepository";
 
 container.registerSingleton<IPatientsRepository>(
   "PatientsRepository",
@@ -22,4 +26,14 @@ container.registerSingleton<IMedicsRepository>(
 container.registerSingleton<IMedicsTokensRepository>(
   "MedicsTokensRepository",
   MedicsTokenRepository
+)
+
+container.registerSingleton<IExamsRepository>(
+  "ExamsRepository",
+  ExamsRepository
+)
+
+container.registerSingleton<IExamsRequestRepository>(
+  "ExamsRequestRepository",
+  ExamsRequestRepository
 )

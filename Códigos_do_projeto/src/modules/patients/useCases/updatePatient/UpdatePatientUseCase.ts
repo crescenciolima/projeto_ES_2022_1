@@ -9,32 +9,40 @@ class UpdatePatientUseCase {
   constructor(
     @inject("PatientsRepository")
     private patientesRepository: IPatientsRepository
-  ) { }
+  ) {}
+
   async execute(id: string, data: IUpdatePatientDTO): Promise<Patient> {
-    const patient = await this.patientesRepository.findById(id)
+    const patient = await this.patientesRepository.findById(id);
+
+    const patientAlreadyExists = await this.patientesRepository.findByCpf(
+      data.id
+    );
+    if (patientAlreadyExists) {
+      throw new AppError("Patient already exists!");
+    }
 
     if (!patient) {
-      throw new AppError("Patient does not exists!")
+      throw new AppError("Patient does not exists!");
     }
 
     data = {
       id: id,
-      name: data.name,
-      ethnicity: data.ethnicity,
-      nationality: data.nationality,
-      cpf: data.cpf,
-      birth_date: data.birth_date,
-      marital_status: data.marital_status,
-      address: data.address,
-      state: data.state,
-      city: data.city,
-      gender: data.gender,
-      phone_number: data.phone_number
-    }
-    
-    await this.patientesRepository.updatePatient(id, data)
-    return patient
+      name: data?.name,
+      ethnicity: data?.ethnicity,
+      nationality: data?.nationality,
+      cpf: data?.cpf,
+      birth_date: data?.birth_date,
+      marital_status: data?.marital_status,
+      address: data?.address,
+      state: data?.state,
+      city: data?.city,
+      gender: data?.gender,
+      phone_number: data?.phone_number,
+    };
+
+    await this.patientesRepository.updatePatient(id, data);
+    return patient;
   }
 }
 
-export { UpdatePatientUseCase }
+export { UpdatePatientUseCase };
