@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 
-import "@shared/container/providers"
+import "@shared/container/providers";
 
 import { IPatientsRepository } from "@modules/patients/repositories/IPatientsRepository";
 import { PatientsRepository } from "@modules/patients/infra/typeorm/repositories/PatientsRepository";
@@ -12,28 +12,42 @@ import { IExamsRepository } from "@modules/exams/repositories/IExamsRepository";
 import { ExamsRepository } from "@modules/exams/infra/typeorm/repositories/ExamRepository";
 import { IExamsRequestRepository } from "@modules/examsRequest/repositories/IExamsRequestRepository";
 import { ExamsRequestRepository } from "@modules/examsRequest/infra/typeorm/repositories/ExamsRequestRepository";
+import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
+import { ResidentsRepository } from "@modules/residents/infra/typeorm/repositories/ResidentsRepository";
+import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
+import { TeachersRepository } from "@modules/teachers/infra/typeorm/repositories/TeachersRepository";
 
 container.registerSingleton<IPatientsRepository>(
   "PatientsRepository",
   PatientsRepository
-)
+);
 
 container.registerSingleton<IMedicsRepository>(
   "MedicsRepository",
   MedicsRepository
-)
+);
 
 container.registerSingleton<IMedicsTokensRepository>(
   "MedicsTokensRepository",
   MedicsTokenRepository
-)
+);
 
 container.registerSingleton<IExamsRepository>(
   "ExamsRepository",
   ExamsRepository
-)
+);
 
 container.registerSingleton<IExamsRequestRepository>(
   "ExamsRequestRepository",
   ExamsRequestRepository
-)
+);
+
+container.registerSingleton<ITeachersRepository>(
+  "TeachersRepository",
+  TeachersRepository
+);
+
+container.registerSingleton<IResidentsRepository>(
+  "ResidentsRepository",
+  ResidentsRepository
+);

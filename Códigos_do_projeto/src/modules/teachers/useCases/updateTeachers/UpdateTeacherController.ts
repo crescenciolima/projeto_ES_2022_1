@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { UpdateMedicUseCase } from "./UpdateMedicUseCase";
+import { UpdateTeacherUseCase } from "./UpdateTeacherUseCase";
 
-class UpdateMedicController {
+class UpdateTeacherController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { ...data } = request.body;
 
-    const updateMedicUseCase = container.resolve(UpdateMedicUseCase);
+    const updateTeacherUseCase = container.resolve(UpdateTeacherUseCase);
 
-    await updateMedicUseCase.execute(id, data);
+    await updateTeacherUseCase.execute(id, data);
 
     return response.status(204).send();
   }
 }
 
-export { UpdateMedicController };
+export { UpdateTeacherController };

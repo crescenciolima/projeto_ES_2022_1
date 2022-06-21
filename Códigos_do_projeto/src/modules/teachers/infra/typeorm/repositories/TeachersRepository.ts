@@ -1,15 +1,15 @@
-import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
-import { IUpdateMedicDTO } from "@modules/medics/dtos/IUpdateMedicDTO";
-import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
+import { ICreateTeacherDTO } from "@modules/teachers/dtos/ICreateTeacherDTO";
+import { IUpdateTeacherDTO } from "@modules/teachers/dtos/IUpdateTeacherDTO";
+import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { AppError } from "@shared/errors/AppError";
 import { getRepository, Repository } from "typeorm";
-import { Medic } from "../entities/Medic";
+import { Teacher } from "../entities/Teacher";
 
-class MedicsRepository implements IMedicsRepository {
-  private repository: Repository<Medic>;
+class TeachersRepository implements ITeachersRepository {
+  private repository: Repository<Teacher>;
 
   constructor() {
-    this.repository = getRepository(Medic);
+    this.repository = getRepository(Teacher);
   }
 
   async create({
@@ -18,6 +18,7 @@ class MedicsRepository implements IMedicsRepository {
     ethnicity,
     crm,
     cpf,
+    titration,
     password,
     marital_status,
     birth_date,
@@ -28,13 +29,14 @@ class MedicsRepository implements IMedicsRepository {
     especialization,
     phone_number,
     id,
-  }: ICreateMedicDTO): Promise<Medic> {
-    const medic = this.repository.create({
+  }: ICreateTeacherDTO): Promise<Teacher> {
+    const teacher = this.repository.create({
       name,
       nationality,
       ethnicity,
       crm,
       cpf,
+      titration,
       password,
       marital_status,
       birth_date,
@@ -46,17 +48,18 @@ class MedicsRepository implements IMedicsRepository {
       phone_number,
       id,
     });
-    await this.repository.save(medic);
-    return medic;
+    await this.repository.save(teacher);
+    return teacher;
   }
 
-  async updateMedic(id: string, data: IUpdateMedicDTO): Promise<Medic> {
+  async updateTeacher(id: string, data: IUpdateTeacherDTO): Promise<Teacher> {
     await this.repository.update(id, {
       name: data.name,
       nationality: data.nationality,
       ethnicity: data.ethnicity,
       crm: data.crm,
       cpf: data.cpf,
+      titration: data.titration,
       password: data.password,
       marital_status: data.marital_status,
       birth_date: data.birth_date,
@@ -67,22 +70,22 @@ class MedicsRepository implements IMedicsRepository {
       especialization: data.especialization,
       phone_number: data.phone_number,
     });
-    const medic = await this.repository.findOne({ id });
-    return medic;
+    const teacher = await this.repository.findOne({ id });
+    return teacher;
   }
 
   async delete(id: string): Promise<void> {
-    const medic = await this.repository.findOne({ id });
+    const teacher = await this.repository.findOne({ id });
 
-    if (!medic) {
-      throw new AppError("Medic does not exist");
+    if (!teacher) {
+      throw new AppError("Teacher does not exist");
     }
 
     await this.repository.delete(id);
   }
 
-  async getAll(): Promise<Medic[]> {
-    const medics = await this.repository.find({
+  async getAll(): Promise<Teacher[]> {
+    const teachers = await this.repository.find({
       select: [
         "id",
         "name",
@@ -90,6 +93,7 @@ class MedicsRepository implements IMedicsRepository {
         "ethnicity",
         "crm",
         "cpf",
+        "titration",
         "marital_status",
         "birth_date",
         "address",
@@ -100,23 +104,23 @@ class MedicsRepository implements IMedicsRepository {
         "phone_number",
       ],
     });
-    return medics;
+    return teachers;
   }
 
-  async findById(id: string): Promise<Medic> {
-    const medic = await this.repository.findOne({ id });
-    return medic;
+  async findById(id: string): Promise<Teacher> {
+    const teacher = await this.repository.findOne({ id });
+    return teacher;
   }
 
-  async findByCpf(cpf: string): Promise<Medic> {
-    const medic = await this.repository.findOne({ cpf });
-    return medic;
+  async findByCpf(cpf: string): Promise<Teacher> {
+    const teacher = await this.repository.findOne({ cpf });
+    return teacher;
   }
 
-  async findByCrm(crm: string): Promise<Medic> {
-    const medic = await this.repository.findOne({ crm });
-    return medic;
+  async findByCrm(crm: string): Promise<Teacher> {
+    const teacher = await this.repository.findOne({ crm });
+    return teacher;
   }
 }
 
-export { MedicsRepository };
+export { TeachersRepository };

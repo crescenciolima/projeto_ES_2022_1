@@ -7,8 +7,8 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("medics")
-class Medic {
+@Entity("teachers")
+class Teacher {
   @PrimaryColumn()
   id: string;
 
@@ -26,6 +26,9 @@ class Medic {
 
   @Column()
   cpf: string;
+
+  @Column()
+  titration: string;
 
   @Column()
   password: string;
@@ -67,4 +70,4 @@ class Medic {
   }
 }
 
-export { Medic };
+export { Teacher };

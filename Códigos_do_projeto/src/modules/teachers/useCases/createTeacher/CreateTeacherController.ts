@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { CreateMedicUseCase } from "./CreateMedicUseCase";
+import { CreateTeacherUseCase } from "./CreateTeacherUseCase";
 
-class CreateMedicController {
+class CreateTeacherController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
       name,
@@ -10,6 +10,7 @@ class CreateMedicController {
       ethnicity,
       crm,
       cpf,
+      titration,
       password,
       marital_status,
       birth_date,
@@ -21,14 +22,15 @@ class CreateMedicController {
       phone_number,
     } = request.body;
 
-    const createMedicUseCase = container.resolve(CreateMedicUseCase);
+    const createTeacherUseCase = container.resolve(CreateTeacherUseCase);
 
-    await createMedicUseCase.execute({
+    await createTeacherUseCase.execute({
       name,
       nationality,
       ethnicity,
       crm,
       cpf,
+      titration,
       password,
       marital_status,
       birth_date,
@@ -44,4 +46,4 @@ class CreateMedicController {
   }
 }
 
-export { CreateMedicController };
+export { CreateTeacherController };
