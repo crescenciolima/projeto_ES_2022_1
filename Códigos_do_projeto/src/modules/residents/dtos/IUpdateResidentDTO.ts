@@ -5,7 +5,7 @@ interface IUpdateResidentDTO {
   nationality?: string;
   crm: string;
   cpf: string;
-  residence_date: Date;
+  residence_date: string;
   password: string;
   marital_status?: string;
   birth_date: Date;

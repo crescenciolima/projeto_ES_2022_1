@@ -12,10 +12,10 @@ import { IExamsRepository } from "@modules/exams/repositories/IExamsRepository";
 import { ExamsRepository } from "@modules/exams/infra/typeorm/repositories/ExamRepository";
 import { IExamsRequestRepository } from "@modules/examsRequest/repositories/IExamsRequestRepository";
 import { ExamsRequestRepository } from "@modules/examsRequest/infra/typeorm/repositories/ExamsRequestRepository";
-import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
-import { ResidentsRepository } from "@modules/residents/infra/typeorm/repositories/ResidentsRepository";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { TeachersRepository } from "@modules/teachers/infra/typeorm/repositories/TeachersRepository";
+import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
+import { ResidentsRepository } from "@modules/residents/infra/typeorm/repositories/ResidentsRepository";
 
 container.registerSingleton<IPatientsRepository>(
   "PatientsRepository",
@@ -42,12 +42,12 @@ container.registerSingleton<IExamsRequestRepository>(
   ExamsRequestRepository
 );
 
-container.registerSingleton<ITeachersRepository>(
-  "TeachersRepository",
-  TeachersRepository
-);
-
 container.registerSingleton<IResidentsRepository>(
   "ResidentsRepository",
   ResidentsRepository
+);
+
+container.registerSingleton<ITeachersRepository>(
+  "TeachersRepository",
+  TeachersRepository
 );

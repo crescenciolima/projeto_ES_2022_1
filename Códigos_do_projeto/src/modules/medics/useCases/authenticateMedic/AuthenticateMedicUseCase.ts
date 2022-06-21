@@ -1,12 +1,12 @@
-import { inject, injectable } from 'tsyringe';
-import 'reflect-metadata';
-import { IMedicsRepository } from '@modules/medics/repositories/IMedicsRepository';
-import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
-import { AppError } from '@shared/errors/AppError';
-import { IMedicsTokensRepository } from '@modules/medics/repositories/IMedicsTokensRepository';
-import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
-import auth from '@config/auth';
+import { inject, injectable } from "tsyringe";
+import "reflect-metadata";
+import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
+import { compare } from "bcrypt";
+import { sign } from "jsonwebtoken";
+import { AppError } from "@shared/errors/AppError";
+import { IMedicsTokensRepository } from "@modules/medics/repositories/IMedicsTokensRepository";
+import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
+import auth from "@config/auth";
 
 interface IRequest {
   cpf: string;
@@ -31,7 +31,7 @@ class AuthenticateMedicUseCase {
     private medicsTokensRepository: IMedicsTokensRepository,
     @inject("DayjsDateProvider")
     private dateProvider: IDateProvider
-  ) { }
+  ) {}
 
   async execute({ cpf, password }: IRequest): Promise<IResponse> {
     const medic = await this.medicsRepository.findByCpf(cpf);

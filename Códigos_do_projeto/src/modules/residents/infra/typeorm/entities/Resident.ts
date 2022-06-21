@@ -28,7 +28,7 @@ class Resident {
   cpf: string;
 
   @Column()
-  residence_date: Date;
+  residence_date: string;
 
   @Column()
   password: string;

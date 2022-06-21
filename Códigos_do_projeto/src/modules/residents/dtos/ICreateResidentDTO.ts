@@ -1,10 +1,10 @@
-interface ICreateResidentDTO {
+interface ICreateResidentsDTO {
   name: string;
   ethnicity?: string;
   nationality?: string;
   crm: string;
   cpf: string;
-  residence_date: Date;
+  residence_date: string;
   password: string;
   marital_status?: string;
   birth_date: Date;
@@ -17,4 +17,4 @@ interface ICreateResidentDTO {
   id?: string;
 }
 
-export { ICreateResidentDTO };
+export { ICreateResidentsDTO };

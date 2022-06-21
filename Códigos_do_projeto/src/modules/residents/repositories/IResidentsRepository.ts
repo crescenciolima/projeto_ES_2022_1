@@ -1,9 +1,9 @@
-import { ICreateResidentDTO } from "../dtos/ICreateResidentDTO";
+import { ICreateResidentsDTO } from "../dtos/ICreateResidentDTO";
 import { IUpdateResidentDTO } from "../dtos/IUpdateResidentDTO";
-import { Resident } from "../infra/typeorm/entitites/Resident";
+import { Resident } from "../infra/typeorm/entities/Resident";
 
 interface IResidentsRepository {
-  create(data: ICreateResidentDTO): Promise<Resident>;
+  create(data: ICreateResidentsDTO): Promise<Resident>;
   updateResident(id: string, data: IUpdateResidentDTO): Promise<Resident>;
   delete(id: string): Promise<void>;
   getAll(): Promise<Resident[]>;

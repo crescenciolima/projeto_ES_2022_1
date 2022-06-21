@@ -1,9 +1,9 @@
 import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
-import { Resident } from "@modules/residents/infra/typeorm/entitites/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
-import { AppError } from "@shared/errors/AppError";
-import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
+import { hash } from "bcrypt";
+import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 class UpdateResidentUseCase {
@@ -30,7 +30,7 @@ class UpdateResidentUseCase {
     }
 
     if (!resident) {
-      throw new AppError("Resident does not exist!");
+      throw new AppError("Resident does not exists!");
     }
 
     data = {
@@ -40,8 +40,8 @@ class UpdateResidentUseCase {
       nationality: data?.nationality,
       crm: data?.crm,
       cpf: data?.cpf,
-      password: passwordHash,
       residence_date: data?.residence_date,
+      password: passwordHash,
       marital_status: data?.marital_status,
       birth_date: data?.birth_date,
       address: data?.address,

@@ -1,9 +1,9 @@
-import { ICreateResidentDTO } from "@modules/residents/dtos/ICreateResidentDTO";
+import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { getRepository, Repository } from "typeorm";
-import { Resident } from "../entitites/Resident";
+import { Resident } from "../entities/Resident";
 
 class ResidentsRepository implements IResidentsRepository {
   private repository: Repository<Resident>;
@@ -29,7 +29,7 @@ class ResidentsRepository implements IResidentsRepository {
     especialization,
     phone_number,
     id,
-  }: ICreateResidentDTO): Promise<Resident> {
+  }: ICreateResidentsDTO): Promise<Resident> {
     const resident = this.repository.create({
       name,
       nationality,

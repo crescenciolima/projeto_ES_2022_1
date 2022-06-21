@@ -1,9 +1,9 @@
-import { ICreateResidentDTO } from "@modules/residents/dtos/ICreateResidentDTO";
-import { Resident } from "@modules/residents/infra/typeorm/entitites/Resident";
+import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
-import { AppError } from "@shared/errors/AppError";
 import { hash } from "bcrypt";
+import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 
 @injectable()
 class CreateResidentUseCase {
@@ -11,6 +11,7 @@ class CreateResidentUseCase {
     @inject("ResidentsRepository")
     private residentsRepository: IResidentsRepository
   ) {}
+
   async execute({
     name,
     nationality,
@@ -27,7 +28,7 @@ class CreateResidentUseCase {
     gender,
     especialization,
     phone_number,
-  }: ICreateResidentDTO): Promise<Resident> {
+  }: ICreateResidentsDTO): Promise<Resident> {
     const residentAlreadyExistsCpf = await this.residentsRepository.findByCpf(
       cpf
     );

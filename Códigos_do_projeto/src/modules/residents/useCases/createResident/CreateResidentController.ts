@@ -10,8 +10,8 @@ class CreateResidentController {
       ethnicity,
       crm,
       cpf,
-      password,
       residence_date,
+      password,
       marital_status,
       birth_date,
       address,
@@ -30,8 +30,8 @@ class CreateResidentController {
       ethnicity,
       crm,
       cpf,
-      password,
       residence_date,
+      password,
       marital_status,
       birth_date,
       address,
@@ -41,6 +41,7 @@ class CreateResidentController {
       especialization,
       phone_number,
     });
+
     return response.status(201).send();
   }
 }

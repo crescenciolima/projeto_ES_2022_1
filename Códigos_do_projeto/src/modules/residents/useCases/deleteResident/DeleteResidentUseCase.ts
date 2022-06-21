@@ -11,9 +11,11 @@ class DeleteResidentUseCase {
 
   async execute(id: string): Promise<void> {
     const resident = await this.residentsRepository.findById(id);
+
     if (!resident) {
-      throw new AppError("Resident not found!");
+      throw new AppError("Resident does not exists!");
     }
+
     await this.residentsRepository.delete(id);
   }
 }
