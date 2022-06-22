@@ -6,9 +6,9 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { ExamRequest } from "@modules/examsRequest/infra/typeorm/entities/ExamRequest";
-import { reportStatus } from "@shared/enums/ReportStatusEnum";
 import { v4 as uuidV4 } from "uuid";
+import { ExamRequest } from "../../../../examsRequest/infra/typeorm/entities/ExamRequest";
+import { reportStatus } from "../../../../../shared/enums/ReportStatusEnum";
 
 @Entity("exams")
 class Exam {

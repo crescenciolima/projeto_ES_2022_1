@@ -5,15 +5,27 @@ import { AppError } from "@shared/errors/AppError";
 import { getRepository, Repository } from "typeorm";
 import { Patient } from "../entities/Patient";
 
-
 class PatientsRepository implements IPatientsRepository {
-  private repository: Repository<Patient>
+  private repository: Repository<Patient>;
 
   constructor() {
-    this.repository = getRepository(Patient)
+    this.repository = getRepository(Patient);
   }
 
-  async create({ name, ethnicity, nationality, cpf, birth_date, marital_status, address, state, city, gender, phone_number, id }: ICreatePatientDTO): Promise<Patient> {
+  async create({
+    name,
+    ethnicity,
+    nationality,
+    cpf,
+    birth_date,
+    marital_status,
+    address,
+    state,
+    city,
+    gender,
+    phone_number,
+    id,
+  }: ICreatePatientDTO): Promise<Patient> {
     const patient = this.repository.create({
       name,
       ethnicity,
@@ -26,11 +38,11 @@ class PatientsRepository implements IPatientsRepository {
       city,
       gender,
       phone_number,
-      id
-    })
+      id,
+    });
 
-    await this.repository.save(patient)
-    return patient
+    await this.repository.save(patient);
+    return patient;
   }
 
   async updatePatient(id: string, data: IUpdatePatientDTO): Promise<Patient> {
@@ -45,37 +57,36 @@ class PatientsRepository implements IPatientsRepository {
       state: data.state,
       city: data.city,
       gender: data.gender,
-      phone_number: data.phone_number
-    })
-    const patient = await this.repository.findOne({ id })
-    return patient
+      phone_number: data.phone_number,
+    });
+    const patient = await this.repository.findOne({ id });
+    return patient;
   }
 
   async delete(id: string): Promise<void> {
-    const patient = await this.repository.findOne({ id })
+    const patient = await this.repository.findOne({ id });
 
     if (!patient) {
-      throw new AppError("Patient does not exist")
+      throw new AppError("Patient does not exist");
     }
 
-    await this.repository.delete(id)
+    await this.repository.delete(id);
   }
 
   async getAll(): Promise<Patient[]> {
-    const patients = await this.repository.find()
-    return patients
+    const patients = await this.repository.find();
+    return patients;
   }
 
   async findByCpf(cpf: string): Promise<Patient> {
-    const patient = await this.repository.findOne({ cpf })
-    return patient
+    const patient = await this.repository.findOne({ cpf });
+    return patient;
   }
 
   async findById(id: string): Promise<Patient> {
-    const patient = await this.repository.findOne({ id })
-    return patient
+    const patient = await this.repository.findOne({ id });
+    return patient;
   }
-
 }
 
-export { PatientsRepository }
+export { PatientsRepository };

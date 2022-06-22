@@ -1,8 +1,8 @@
-import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
-import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { inject, injectable } from "tsyringe";
-import { hash } from "bcrypt";
 import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
+import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
+import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
+import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()

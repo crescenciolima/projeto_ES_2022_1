@@ -1,6 +1,6 @@
+import { inject, injectable } from "tsyringe";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class DeleteTeacherUseCase {

@@ -1,6 +1,6 @@
+import { inject, injectable } from "tsyringe";
 import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class ListTeachersUseCase {

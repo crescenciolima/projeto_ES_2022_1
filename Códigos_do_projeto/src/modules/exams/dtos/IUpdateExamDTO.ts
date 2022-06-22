@@ -9,4 +9,4 @@ interface IUpdateExamDTO {
   id: string;
 }
 
-export { IUpdateExamDTO }
+export { IUpdateExamDTO };

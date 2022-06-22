@@ -9,51 +9,59 @@ class ExamsRequestRepository implements IExamsRequestRepository {
   private repository: Repository<ExamRequest>;
 
   constructor() {
-    this.repository = getRepository(ExamRequest)
+    this.repository = getRepository(ExamRequest);
   }
 
-  async create({exams, diagnostic_hypothesis, date, patient_id}: ICreateExamRequestDTO): Promise<ExamRequest> {
+  async create({
+    exams,
+    diagnostic_hypothesis,
+    date,
+    patient_id,
+  }: ICreateExamRequestDTO): Promise<ExamRequest> {
     const examRequest = this.repository.create({
       exams,
       diagnostic_hypothesis,
       date,
-      patient_id
-    })
+      patient_id,
+    });
 
-    await this.repository.save(examRequest)
-    return examRequest
+    await this.repository.save(examRequest);
+    return examRequest;
   }
 
-  async updateExamRequest(id: string, data: IUpdateExamRequestDTO): Promise<ExamRequest> {
+  async updateExamRequest(
+    id: string,
+    data: IUpdateExamRequestDTO
+  ): Promise<ExamRequest> {
     await this.repository.update(id, {
       exams: data.exams,
       diagnostic_hypothesis: data.diagnostic_hypothesis,
       date: data.date,
-    })
+    });
 
-    const examRequest = await this.repository.findOne({id})
-    return examRequest
+    const examRequest = await this.repository.findOne({ id });
+    return examRequest;
   }
 
   async delete(id: string): Promise<void> {
-    const examRequest = await this.repository.findOne({id})
+    const examRequest = await this.repository.findOne({ id });
 
     if (!examRequest) {
-      throw new AppError("Exam request does not exist")
+      throw new AppError("Exam request does not exist");
     }
 
-    await this.repository.delete(id)
+    await this.repository.delete(id);
   }
 
   async getAll(): Promise<ExamRequest[]> {
-    const examRequests = await this.repository.find()
-    return examRequests
+    const examRequests = await this.repository.find();
+    return examRequests;
   }
 
   async findById(id: string): Promise<ExamRequest> {
-    const examRequest = await this.repository.findOne({id})
-    return examRequest
+    const examRequest = await this.repository.findOne({ id });
+    return examRequest;
   }
 }
 
-export { ExamsRequestRepository }
+export { ExamsRequestRepository };

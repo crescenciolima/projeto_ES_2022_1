@@ -1,8 +1,8 @@
-import { IUpdateMedicDTO } from "@modules/medics/dtos/IUpdateMedicDTO";
-import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
 import { inject, injectable } from "tsyringe";
-import { hash } from "bcrypt";
 import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
+import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
+import { IUpdateMedicDTO } from "@modules/medics/dtos/IUpdateMedicDTO";
+import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()

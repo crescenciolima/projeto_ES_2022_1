@@ -1,15 +1,15 @@
-import { Request, Response } from "express"
-import { container } from "tsyringe"
-import { ListPatientsUseCase } from "./ListPatientsUseCase"
+import { Request, Response } from "express";
+import { container } from "tsyringe";
+import { ListPatientsUseCase } from "./ListPatientsUseCase";
 
 class ListPatientsController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const listPatientsUseCase = container.resolve(ListPatientsUseCase)
+    const listPatientsUseCase = container.resolve(ListPatientsUseCase);
 
-    const all = await listPatientsUseCase.execute()
+    const all = await listPatientsUseCase.execute();
 
-    return response.json(all)
+    return response.json(all);
   }
 }
 
-export { ListPatientsController }
+export { ListPatientsController };

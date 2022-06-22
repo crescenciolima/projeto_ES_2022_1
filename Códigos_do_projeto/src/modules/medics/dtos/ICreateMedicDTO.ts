@@ -16,4 +16,4 @@ interface ICreateMedicDTO {
   id?: string;
 }
 
-export { ICreateMedicDTO }
+export { ICreateMedicDTO };

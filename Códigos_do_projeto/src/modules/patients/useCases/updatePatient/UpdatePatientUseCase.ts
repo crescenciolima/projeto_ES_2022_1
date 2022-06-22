@@ -1,8 +1,8 @@
-import { IUpdatePatientDTO } from "@modules/patients/dtos/IUpdatePatientDTO";
+import { inject, injectable } from "tsyringe";
 import { Patient } from "@modules/patients/infra/typeorm/entities/Patient";
 import { IPatientsRepository } from "@modules/patients/repositories/IPatientsRepository";
+import { IUpdatePatientDTO } from "@modules/patients/dtos/IUpdatePatientDTO";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class UpdatePatientUseCase {

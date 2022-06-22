@@ -1,6 +1,6 @@
+import { inject, injectable } from "tsyringe";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class DeleteResidentUseCase {

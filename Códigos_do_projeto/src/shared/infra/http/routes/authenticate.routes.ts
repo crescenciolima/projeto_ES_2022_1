@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AuthenticateMedicController } from "@modules/medics/useCases/authenticateMedic/AuthenticateMedicController";
+import { AuthenticateMedicController } from "@modules/authenticate/authenticateMedic/AuthenticateMedicController";
 import { RefreshTokenController } from "@modules/medics/useCases/refreshToken/RefreshTokenController";
 
 const authenticateRoutes = Router();

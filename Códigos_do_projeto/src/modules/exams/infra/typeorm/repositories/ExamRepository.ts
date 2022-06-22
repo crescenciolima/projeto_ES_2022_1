@@ -5,26 +5,32 @@ import { AppError } from "@shared/errors/AppError";
 import { getRepository, Repository } from "typeorm";
 import { Exam } from "../entities/Exam";
 
-
 class ExamsRepository implements IExamsRepository {
   private repository: Repository<Exam>;
 
   constructor() {
-    this.repository = getRepository(Exam)
+    this.repository = getRepository(Exam);
   }
 
-  async create({name, date, attachment, report, status, examRequest_id}: ICreateExamDTO): Promise<Exam> {
+  async create({
+    name,
+    date,
+    attachment,
+    report,
+    status,
+    examRequest_id,
+  }: ICreateExamDTO): Promise<Exam> {
     const exam = this.repository.create({
       name,
       date,
       attachment,
       report,
       status,
-      examRequest_id
-    })
+      examRequest_id,
+    });
 
-    await this.repository.save(exam)
-    return exam
+    await this.repository.save(exam);
+    return exam;
   }
 
   async updateExam(id: string, data: IUpdateExamDTO): Promise<Exam> {
@@ -34,32 +40,31 @@ class ExamsRepository implements IExamsRepository {
       attachment: data.attachment,
       report: data.report,
       status: data.status,
-    })
+    });
 
-    const exam = await this.repository.findOne({id})
-    return exam
+    const exam = await this.repository.findOne({ id });
+    return exam;
   }
 
   async delete(id: string): Promise<void> {
-    const exam = await this.repository.findOne({id})
+    const exam = await this.repository.findOne({ id });
 
     if (!exam) {
-      throw new AppError("Exam does not exist")
+      throw new AppError("Exam does not exist");
     }
 
-    await this.repository.delete(id)
+    await this.repository.delete(id);
   }
-  
+
   async getAll(): Promise<Exam[]> {
-    const exams = await this.repository.find()
-    return exams
+    const exams = await this.repository.find();
+    return exams;
   }
 
   async findById(id: string): Promise<Exam> {
-    const exam = await this.repository.findOne({id})
-    return exam
+    const exam = await this.repository.findOne({ id });
+    return exam;
   }
-
 }
 
-export { ExamsRepository }
+export { ExamsRepository };

@@ -1,8 +1,8 @@
-import { IUpdateExamDTO } from "@modules/exams/dtos/IUpdateExamDTO";
+import { inject, injectable } from "tsyringe";
 import { Exam } from "@modules/exams/infra/typeorm/entities/Exam";
 import { IExamsRepository } from "@modules/exams/repositories/IExamsRepository";
+import { IUpdateExamDTO } from "@modules/exams/dtos/IUpdateExamDTO";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class UpdateExamUseCase {

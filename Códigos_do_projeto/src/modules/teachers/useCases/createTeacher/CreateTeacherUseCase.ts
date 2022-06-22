@@ -1,9 +1,9 @@
-import { ICreateTeacherDTO } from "@modules/teachers/dtos/ICreateTeacherDTO";
+import { inject, injectable } from "tsyringe";
 import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
-import { AppError } from "@shared/errors/AppError";
+import { ICreateTeacherDTO } from "@modules/teachers/dtos/ICreateTeacherDTO";
 import { hash } from "bcrypt";
-import { inject, injectable } from "tsyringe";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 class CreateTeacherUseCase {

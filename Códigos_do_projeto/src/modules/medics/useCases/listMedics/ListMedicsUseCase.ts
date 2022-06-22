@@ -1,6 +1,6 @@
+import { inject, injectable } from "tsyringe";
 import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
 import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class ListMedicsUseCase {

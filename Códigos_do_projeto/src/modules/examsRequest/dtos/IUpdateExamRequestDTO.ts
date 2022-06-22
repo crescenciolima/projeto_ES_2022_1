@@ -1,8 +1,8 @@
 interface IUpdateExamRequestDTO {
-  id: string
-  exams: string
-  diagnostic_hypothesis: string
-  date: Date
+  id: string;
+  exams: string;
+  diagnostic_hypothesis: string;
+  date: Date;
 }
 
-export { IUpdateExamRequestDTO }
+export { IUpdateExamRequestDTO };

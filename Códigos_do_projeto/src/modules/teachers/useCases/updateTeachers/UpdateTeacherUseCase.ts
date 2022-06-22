@@ -1,8 +1,8 @@
-import { IUpdateTeacherDTO } from "@modules/teachers/dtos/IUpdateTeacherDTO";
-import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { inject, injectable } from "tsyringe";
-import { hash } from "bcrypt";
 import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
+import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
+import { IUpdateTeacherDTO } from "@modules/teachers/dtos/IUpdateTeacherDTO";
+import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()

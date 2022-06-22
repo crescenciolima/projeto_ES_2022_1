@@ -1,56 +1,61 @@
-import { v4 as uuidV4 } from "uuid"
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 @Entity("patients")
 class Patient {
   @PrimaryColumn()
-  id: string
+  id: string;
 
   @Column()
-  name: string
+  name: string;
 
   @Column()
-  ethnicity: string
+  ethnicity: string;
 
   @Column()
-  nationality: string
+  nationality: string;
 
   @Column()
-  cpf: string
+  cpf: string;
 
   @Column()
-  birth_date: Date
+  birth_date: Date;
 
   @Column()
-  marital_status: string
+  marital_status: string;
 
   @Column()
-  address: string
+  address: string;
 
   @Column()
-  state: string
+  state: string;
 
   @Column()
-  city: string
+  city: string;
 
   @Column()
-  gender: string
+  gender: string;
 
   @Column()
-  phone_number: string
+  phone_number: string;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date
+  updated_at: Date;
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4()
+      this.id = uuidV4();
     }
   }
-
 }
 
-export { Patient }
+export { Patient };

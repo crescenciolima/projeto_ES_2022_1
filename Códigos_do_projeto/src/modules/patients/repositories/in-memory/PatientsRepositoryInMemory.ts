@@ -4,10 +4,22 @@ import { Patient } from "@modules/patients/infra/typeorm/entities/Patient";
 import { IPatientsRepository } from "../IPatientsRepository";
 
 class PatientsRepositoryInMemory implements IPatientsRepository {
-  patients: Patient[] = []
+  patients: Patient[] = [];
 
-  async create({ name, ethnicity, nationality, cpf, birth_date, marital_status, address, state, city, gender, phone_number }: ICreatePatientDTO): Promise<Patient> {
-    const patient = new Patient()
+  async create({
+    name,
+    ethnicity,
+    nationality,
+    cpf,
+    birth_date,
+    marital_status,
+    address,
+    state,
+    city,
+    gender,
+    phone_number,
+  }: ICreatePatientDTO): Promise<Patient> {
+    const patient = new Patient();
 
     Object.assign(patient, {
       name,
@@ -20,15 +32,15 @@ class PatientsRepositoryInMemory implements IPatientsRepository {
       state,
       city,
       gender,
-      phone_number
-    })
-    this.patients.push(patient)
-    return patient
+      phone_number,
+    });
+    this.patients.push(patient);
+    return patient;
   }
 
   async updatePatient(id: string, data: IUpdatePatientDTO): Promise<Patient> {
-    const patient = this.patients.find((patient) => patient.id === id)
-    const index = this.patients.indexOf(patient)
+    const patient = this.patients.find((patient) => patient.id === id);
+    const index = this.patients.indexOf(patient);
 
     Object.assign(patient, {
       name: data.name,
@@ -41,15 +53,15 @@ class PatientsRepositoryInMemory implements IPatientsRepository {
       city: data.city,
       state: data.state,
       gender: data.gender,
-      phone_number: data.phone_number
-    })
-    this.patients.splice(index, 1, patient)
-    return patient
+      phone_number: data.phone_number,
+    });
+    this.patients.splice(index, 1, patient);
+    return patient;
   }
 
   async delete(id: string): Promise<void> {
-    const patient = await this.patients.find((patient) => patient.id === id)
-    this.patients.splice(this.patients.indexOf(patient))
+    const patient = await this.patients.find((patient) => patient.id === id);
+    this.patients.splice(this.patients.indexOf(patient));
   }
 
   async getAll(): Promise<Patient[]> {
@@ -58,13 +70,12 @@ class PatientsRepositoryInMemory implements IPatientsRepository {
   }
 
   async findById(id: string): Promise<Patient> {
-    return this.patients.find((patient) => patient.id === id)
+    return this.patients.find((patient) => patient.id === id);
   }
 
   async findByCpf(cpf: string): Promise<Patient> {
-    return this.patients.find(patient => patient.cpf === cpf)
+    return this.patients.find((patient) => patient.cpf === cpf);
   }
-
 }
 
-export { PatientsRepositoryInMemory }
+export { PatientsRepositoryInMemory };

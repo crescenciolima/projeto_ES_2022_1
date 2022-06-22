@@ -1,9 +1,9 @@
+import { inject, injectable } from "tsyringe";
 import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
 import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
+import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
-import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
 
 @injectable()
 class CreateMedicUseCase {

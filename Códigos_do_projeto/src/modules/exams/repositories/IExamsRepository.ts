@@ -10,4 +10,4 @@ interface IExamsRepository {
   findById(id: string): Promise<Exam>;
 }
 
-export { IExamsRepository }
+export { IExamsRepository };

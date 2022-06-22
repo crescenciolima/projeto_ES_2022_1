@@ -10,4 +10,4 @@ interface ICreateExamDTO {
   id?: string;
 }
 
-export { ICreateExamDTO }
+export { ICreateExamDTO };

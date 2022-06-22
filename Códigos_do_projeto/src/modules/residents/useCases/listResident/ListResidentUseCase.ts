@@ -1,6 +1,6 @@
+import { inject, injectable } from "tsyringe";
 import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 class ListResidentsUseCase {

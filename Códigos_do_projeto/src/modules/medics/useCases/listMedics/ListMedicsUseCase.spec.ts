@@ -1,14 +1,14 @@
-import { MedicsRepositoryInMemory } from "@modules/medics/repositories/in-memory/MedicsRepositoryInMemory"
-import { ListMedicsUseCase } from "./ListMedicsUseCase"
+import { MedicsRepositoryInMemory } from "@modules/medics/repositories/in-memory/MedicsRepositoryInMemory";
+import { ListMedicsUseCase } from "./ListMedicsUseCase";
 
-let listMedicsUseCase: ListMedicsUseCase
-let medicsRepositoryInMemory: MedicsRepositoryInMemory
+let listMedicsUseCase: ListMedicsUseCase;
+let medicsRepositoryInMemory: MedicsRepositoryInMemory;
 
 describe("List medics", () => {
   beforeEach(() => {
-    medicsRepositoryInMemory = new MedicsRepositoryInMemory()
-    listMedicsUseCase = new ListMedicsUseCase(medicsRepositoryInMemory)
-  })
+    medicsRepositoryInMemory = new MedicsRepositoryInMemory();
+    listMedicsUseCase = new ListMedicsUseCase(medicsRepositoryInMemory);
+  });
 
   it("should be able to list all medics", async () => {
     const medic = await medicsRepositoryInMemory.create({
@@ -25,9 +25,9 @@ describe("List medics", () => {
       state: "test",
       gender: "test",
       especialization: "cardiologist",
-      phone_number: "1000"
-    })
-    const medics = await listMedicsUseCase.execute()
-    expect(medics).toEqual([medic])
-  })
-})
+      phone_number: "1000",
+    });
+    const medics = await listMedicsUseCase.execute();
+    expect(medics).toEqual([medic]);
+  });
+});

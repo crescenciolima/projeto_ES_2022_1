@@ -1,9 +1,9 @@
+import { inject, injectable } from "tsyringe";
 import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
+import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
-import { inject, injectable } from "tsyringe";
-import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 
 @injectable()
 class CreateResidentUseCase {

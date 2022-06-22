@@ -99,4 +99,3 @@ export class CreateResidents1655793429077 implements MigrationInterface {
     await queryRunner.dropTable("residents");
   }
 }
-

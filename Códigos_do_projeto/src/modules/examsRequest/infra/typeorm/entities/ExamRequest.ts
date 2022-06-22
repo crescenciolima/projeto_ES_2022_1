@@ -1,3 +1,4 @@
+import { Patient } from "../../../../patients/infra/typeorm/entities/Patient";
 import {
   Column,
   CreateDateColumn,
@@ -6,7 +7,6 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { Patient } from "@modules/patients/infra/typeorm/entities/Patient";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity("exams_request")

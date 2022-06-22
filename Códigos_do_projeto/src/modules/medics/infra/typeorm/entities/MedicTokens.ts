@@ -1,5 +1,5 @@
-import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
-import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
+import { Resident } from "../../../../residents/infra/typeorm/entities/Resident";
+import { Teacher } from "../../../../teachers/infra/typeorm/entities/Teacher";
 import {
   Column,
   CreateDateColumn,
@@ -22,16 +22,22 @@ class MedicTokens {
   @Column()
   medic_id: string;
 
+  @Column()
+  resident_id: string;
+
+  @Column()
+  teacher_id: string;
+
   @ManyToOne(() => Medic)
   @JoinColumn({ name: "medic_id" })
   medic: Medic;
 
   @ManyToOne(() => Resident)
-  @JoinColumn({ name: "medic_id" })
+  @JoinColumn({ name: "resident_id" })
   resident: Resident;
 
   @ManyToOne(() => Teacher)
-  @JoinColumn({ name: "medic_id" })
+  @JoinColumn({ name: "teacher_id" })
   teacher: Teacher;
 
   @Column()

@@ -3,8 +3,5 @@ declare namespace Express {
     medic: {
       id: string;
     };
-    exam: {
-      id: string;
-    };
   }
 }
