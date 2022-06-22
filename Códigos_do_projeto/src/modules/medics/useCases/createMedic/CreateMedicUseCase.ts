@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
 import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
 import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class CreateMedicUseCase {
@@ -28,14 +29,9 @@ class CreateMedicUseCase {
     especialization,
     phone_number,
   }: ICreateMedicDTO): Promise<Medic> {
-    const medicAlreadyExistsCpf = await this.medicsRepository.findByCpf(cpf);
-    if (medicAlreadyExistsCpf) {
-      throw new AppError("Medic already exists!");
-    }
-    const medicAlreadyExistsCrm = await this.medicsRepository.findByCrm(crm);
-    if (medicAlreadyExistsCrm) {
-      throw new AppError("Medic already exists!");
-    }
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(crm, cpf);
 
     const passwordHash = await hash(password, 8);
 

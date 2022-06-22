@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class CreateResidentUseCase {
@@ -29,18 +30,9 @@ class CreateResidentUseCase {
     especialization,
     phone_number,
   }: ICreateResidentsDTO): Promise<Resident> {
-    const residentAlreadyExistsCpf = await this.residentsRepository.findByCpf(
-      cpf
-    );
-    if (residentAlreadyExistsCpf) {
-      throw new AppError("Resident already exists!");
-    }
-    const residentAlreadyExistsCrm = await this.residentsRepository.findByCrm(
-      crm
-    );
-    if (residentAlreadyExistsCrm) {
-      throw new AppError("Resident already exists!");
-    }
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(crm, cpf);
 
     const passwordHash = await hash(password, 8);
 

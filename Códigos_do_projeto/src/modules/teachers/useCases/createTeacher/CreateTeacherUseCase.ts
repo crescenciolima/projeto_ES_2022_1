@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { ICreateTeacherDTO } from "@modules/teachers/dtos/ICreateTeacherDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class CreateTeacherUseCase {
@@ -28,18 +29,9 @@ class CreateTeacherUseCase {
     especialization,
     phone_number,
   }: ICreateTeacherDTO): Promise<Teacher> {
-    const teacherAlreadyExistsCpf = await this.teachersRepository.findByCpf(
-      cpf
-    );
-    if (teacherAlreadyExistsCpf) {
-      throw new AppError("Teacher already exists!");
-    }
-    const teacherAlreadyExistsCrm = await this.teachersRepository.findByCrm(
-      crm
-    );
-    if (teacherAlreadyExistsCrm) {
-      throw new AppError("Teacher already exists!");
-    }
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(crm, cpf);
 
     const passwordHash = await hash(password, 8);
 
