@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
 import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
 import { IUpdateMedicDTO } from "@modules/medics/dtos/IUpdateMedicDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class UpdateMedicUseCase {
@@ -13,25 +14,16 @@ class UpdateMedicUseCase {
   ) {}
 
   async execute(id: string, data: IUpdateMedicDTO): Promise<Medic> {
-    const medic = await this.medicsRepository.findById(id);
     const passwordHash = await hash(data.password, 8);
 
-    const medicAlreadyExistsCpf = await this.medicsRepository.findByCpf(
-      data.cpf
-    );
-    if (medicAlreadyExistsCpf) {
-      throw new AppError("Medic already exists!");
-    }
-    const medicAlreadyExistsCrm = await this.medicsRepository.findByCrm(
-      data.crm
-    );
-    if (medicAlreadyExistsCrm) {
-      throw new AppError("Medic already exists!");
-    }
-
+    const medic = await this.medicsRepository.findById(id);
     if (!medic) {
       throw new AppError("Medic does not exists!");
     }
+
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(data.crm, data.cpf);
 
     data = {
       id: id,

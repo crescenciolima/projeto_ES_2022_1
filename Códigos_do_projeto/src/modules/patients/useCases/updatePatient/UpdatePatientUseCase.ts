@@ -13,16 +13,15 @@ class UpdatePatientUseCase {
 
   async execute(id: string, data: IUpdatePatientDTO): Promise<Patient> {
     const patient = await this.patientesRepository.findById(id);
+    if (!patient) {
+      throw new AppError("Patient does not exists!");
+    }
 
     const patientAlreadyExists = await this.patientesRepository.findByCpf(
       data.id
     );
     if (patientAlreadyExists) {
       throw new AppError("Patient already exists!");
-    }
-
-    if (!patient) {
-      throw new AppError("Patient does not exists!");
     }
 
     data = {

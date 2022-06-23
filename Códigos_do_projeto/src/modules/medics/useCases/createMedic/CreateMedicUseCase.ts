@@ -3,7 +3,6 @@ import { Medic } from "@modules/medics/infra/typeorm/entities/Medic";
 import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepository";
 import { ICreateMedicDTO } from "@modules/medics/dtos/ICreateMedicDTO";
 import { hash } from "bcrypt";
-import { AppError } from "@shared/errors/AppError";
 import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
@@ -29,11 +28,11 @@ class CreateMedicUseCase {
     especialization,
     phone_number,
   }: ICreateMedicDTO): Promise<Medic> {
+    const passwordHash = await hash(password, 8);
+
     const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
 
     await validateCpfAndCrm.execute(crm, cpf);
-
-    const passwordHash = await hash(password, 8);
 
     const medic = await this.medicsRepository.create({
       name,

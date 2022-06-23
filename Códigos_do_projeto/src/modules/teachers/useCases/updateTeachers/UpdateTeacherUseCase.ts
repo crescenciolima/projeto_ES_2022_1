@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { IUpdateTeacherDTO } from "@modules/teachers/dtos/IUpdateTeacherDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class UpdateTeacherUseCase {
@@ -13,25 +14,16 @@ class UpdateTeacherUseCase {
   ) {}
 
   async execute(id: string, data: IUpdateTeacherDTO): Promise<Teacher> {
-    const teacher = await this.teachersRepository.findById(id);
     const passwordHash = await hash(data.password, 8);
 
-    const teacherAlreadyExistsCpf = await this.teachersRepository.findByCpf(
-      data.cpf
-    );
-    if (teacherAlreadyExistsCpf) {
-      throw new AppError("Teacher already exists!");
-    }
-    const teacherAlreadyExistsCrm = await this.teachersRepository.findByCrm(
-      data.crm
-    );
-    if (teacherAlreadyExistsCrm) {
-      throw new AppError("Teacher already exists!");
-    }
-
+    const teacher = await this.teachersRepository.findById(id);
     if (!teacher) {
       throw new AppError("Teacher does not exists!");
     }
+
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(data.crm, data.cpf);
 
     data = {
       id: id,

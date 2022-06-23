@@ -40,7 +40,6 @@ class CreatePatientUseCase {
     const patientAlreadyExistsCpf = await this.patientsRepository.findByCpf(
       cpf
     );
-
     if (patientAlreadyExistsCpf) {
       throw new AppError("Patient already exists!");
     }

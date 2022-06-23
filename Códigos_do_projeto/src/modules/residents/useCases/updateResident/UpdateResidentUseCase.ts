@@ -1,9 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
 class UpdateResidentUseCase {
@@ -13,25 +14,16 @@ class UpdateResidentUseCase {
   ) {}
 
   async execute(id: string, data: IUpdateResidentDTO): Promise<Resident> {
-    const resident = await this.residentsRepository.findById(id);
     const passwordHash = await hash(data.password, 8);
 
-    const residentAlreadyExistsCpf = await this.residentsRepository.findByCpf(
-      data.cpf
-    );
-    if (residentAlreadyExistsCpf) {
-      throw new AppError("Resident already exists!");
-    }
-    const residentAlreadyExistsCrm = await this.residentsRepository.findByCrm(
-      data.crm
-    );
-    if (residentAlreadyExistsCrm) {
-      throw new AppError("Resident already exists!");
-    }
-
+    const resident = await this.residentsRepository.findById(id);
     if (!resident) {
       throw new AppError("Resident does not exists!");
     }
+
+    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+
+    await validateCpfAndCrm.execute(data.crm, data.cpf);
 
     data = {
       id: id,

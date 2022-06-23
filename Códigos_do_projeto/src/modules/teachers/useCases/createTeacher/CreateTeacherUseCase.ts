@@ -3,7 +3,6 @@ import { Teacher } from "@modules/teachers/infra/typeorm/entities/Teacher";
 import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRepository";
 import { ICreateTeacherDTO } from "@modules/teachers/dtos/ICreateTeacherDTO";
 import { hash } from "bcrypt";
-import { AppError } from "@shared/errors/AppError";
 import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
@@ -29,11 +28,11 @@ class CreateTeacherUseCase {
     especialization,
     phone_number,
   }: ICreateTeacherDTO): Promise<Teacher> {
+    const passwordHash = await hash(password, 8);
+
     const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
 
     await validateCpfAndCrm.execute(crm, cpf);
-
-    const passwordHash = await hash(password, 8);
 
     const teacher = await this.teachersRepository.create({
       name,

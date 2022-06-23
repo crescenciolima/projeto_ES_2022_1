@@ -3,7 +3,6 @@ import { Resident } from "@modules/residents/infra/typeorm/entities/Resident";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { ICreateResidentsDTO } from "@modules/residents/dtos/ICreateResidentDTO";
 import { hash } from "bcrypt";
-import { AppError } from "@shared/errors/AppError";
 import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
 
 @injectable()
@@ -30,11 +29,11 @@ class CreateResidentUseCase {
     especialization,
     phone_number,
   }: ICreateResidentsDTO): Promise<Resident> {
+    const passwordHash = await hash(password, 8);
+
     const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
 
     await validateCpfAndCrm.execute(crm, cpf);
-
-    const passwordHash = await hash(password, 8);
 
     const resident = await this.residentsRepository.create({
       name,
