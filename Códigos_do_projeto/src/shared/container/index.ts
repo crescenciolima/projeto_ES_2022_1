@@ -16,6 +16,7 @@ import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRep
 import { TeachersRepository } from "@modules/teachers/infra/typeorm/repositories/TeachersRepository";
 import { IResidentsRepository } from "@modules/residents/repositories/IResidentsRepository";
 import { ResidentsRepository } from "@modules/residents/infra/typeorm/repositories/ResidentsRepository";
+import { MedicsRepositoryInMemory } from "@modules/medics/repositories/in-memory/MedicsRepositoryInMemory";
 
 container.registerSingleton<IPatientsRepository>(
   "PatientsRepository",

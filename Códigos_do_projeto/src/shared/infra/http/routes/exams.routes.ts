@@ -10,6 +10,7 @@ import { UpdateExamAttachmentController } from "@modules/exams/useCases/updateEx
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 import uploadConfig from "@config/upload";
+import { GetExamByIdController } from "@modules/exams/useCases/GetExamById/GetExamByIdController";
 
 const examsRoutes = Router();
 
@@ -20,6 +21,7 @@ const listExamsController = new ListExamsController();
 const deleteExamController = new DeleteExamController();
 const updateExamController = new UpdateExamController();
 const updateExamAttachmentController = new UpdateExamAttachmentController();
+const getExamByIdController = new GetExamByIdController();
 
 examsRoutes.post("/", ensureAuthenticated, createExamController.handle);
 examsRoutes.get("/", ensureAuthenticated, listExamsController.handle);
@@ -31,5 +33,6 @@ examsRoutes.patch(
   uploadAttachment.single("exam"),
   updateExamAttachmentController.handle
 );
+examsRoutes.get("/:id", ensureAuthenticated, getExamByIdController.handle);
 
 export { examsRoutes };

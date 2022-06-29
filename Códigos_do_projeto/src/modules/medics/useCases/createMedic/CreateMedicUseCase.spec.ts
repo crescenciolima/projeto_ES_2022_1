@@ -1,9 +1,13 @@
 import { MedicsRepositoryInMemory } from "@modules/medics/repositories/in-memory/MedicsRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
+import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
+import { container } from "tsyringe";
 import { CreateMedicUseCase } from "./CreateMedicUseCase";
 
 let createMedicUseCase: CreateMedicUseCase;
 let medicsRepositoryInMemory: MedicsRepositoryInMemory;
+
+const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
 
 describe("Create a medic", () => {
   beforeEach(() => {
@@ -32,7 +36,7 @@ describe("Create a medic", () => {
   });
 
   it("should not be able to create a medic with exists cpf", async () => {
-    await createMedicUseCase.execute({
+    const medic1 = await createMedicUseCase.execute({
       name: "Medic Supertest",
       ethnicity: "test",
       nationality: "test",
@@ -65,7 +69,7 @@ describe("Create a medic", () => {
         especialization: "cardiologist",
         phone_number: "1000",
       })
-    ).rejects.toEqual(new AppError("Medic already exists!"));
+    ).rejects.toEqual(validateCpfAndCrm.execute(medic1.crm, medic1.cpf));
   });
 
   it("should not be able to create a medic with exists crm", async () => {
