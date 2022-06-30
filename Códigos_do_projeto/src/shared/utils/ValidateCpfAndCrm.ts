@@ -9,14 +9,14 @@ import { inject, injectable } from "tsyringe";
 class ValidateCpfAndCrm {
   constructor(
     @inject("MedicsRepository")
-    private medicsRepository: IMedicsRepository
-  ) // @inject("ResidentsRepository")
-  // private residentsRepository: IResidentsRepository,
-  // @inject("TeachersRepository")
-  // private teachersRepository: ITeachersRepository,
-  // @inject("PatientsRepository")
-  // private patientsRepository: IPatientsRepository
-  {}
+    private medicsRepository: IMedicsRepository,
+    @inject("ResidentsRepository")
+    private residentsRepository: IResidentsRepository,
+    @inject("TeachersRepository")
+    private teachersRepository: ITeachersRepository,
+    @inject("PatientsRepository")
+    private patientsRepository: IPatientsRepository
+  ) {}
 
   async execute(crm: string, cpf: string): Promise<void> {
     const medicAlreadyExistsCpf = await this.medicsRepository.findByCpf(cpf);
@@ -28,38 +28,38 @@ class ValidateCpfAndCrm {
       throw new AppError("Medic already exists!");
     }
 
-    // const residentAlreadyExistsCpf = await this.residentsRepository.findByCpf(
-    //   cpf
-    // );
-    // if (residentAlreadyExistsCpf) {
-    //   throw new AppError("Resident already exists!");
-    // }
-    // const residentAlreadyExistsCrm = await this.residentsRepository.findByCrm(
-    //   crm
-    // );
-    // if (residentAlreadyExistsCrm) {
-    //   throw new AppError("Resident already exists!");
-    // }
+    const residentAlreadyExistsCpf = await this.residentsRepository.findByCpf(
+      cpf
+    );
+    if (residentAlreadyExistsCpf) {
+      throw new AppError("Resident already exists!");
+    }
+    const residentAlreadyExistsCrm = await this.residentsRepository.findByCrm(
+      crm
+    );
+    if (residentAlreadyExistsCrm) {
+      throw new AppError("Resident already exists!");
+    }
 
-    // const teacherAlreadyExistsCpf = await this.teachersRepository.findByCpf(
-    //   cpf
-    // );
-    // if (teacherAlreadyExistsCpf) {
-    //   throw new AppError("Teacher already exists!");
-    // }
-    // const teacherAlreadyExistsCrm = await this.teachersRepository.findByCrm(
-    //   crm
-    // );
-    // if (teacherAlreadyExistsCrm) {
-    //   throw new AppError("Teacher already exists!");
-    // }
+    const teacherAlreadyExistsCpf = await this.teachersRepository.findByCpf(
+      cpf
+    );
+    if (teacherAlreadyExistsCpf) {
+      throw new AppError("Teacher already exists!");
+    }
+    const teacherAlreadyExistsCrm = await this.teachersRepository.findByCrm(
+      crm
+    );
+    if (teacherAlreadyExistsCrm) {
+      throw new AppError("Teacher already exists!");
+    }
 
-    // const patientAlreadyExistsCpf = await this.patientsRepository.findByCpf(
-    //   cpf
-    // );
-    // if (patientAlreadyExistsCpf) {
-    //   throw new AppError("Patient already exists!");
-    // }
+    const patientAlreadyExistsCpf = await this.patientsRepository.findByCpf(
+      cpf
+    );
+    if (patientAlreadyExistsCpf) {
+      throw new AppError("Patient already exists!");
+    }
   }
 }
 
