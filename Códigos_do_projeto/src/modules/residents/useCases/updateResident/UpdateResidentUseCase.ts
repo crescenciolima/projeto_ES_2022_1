@@ -4,7 +4,7 @@ import { IResidentsRepository } from "@modules/residents/repositories/IResidents
 import { IUpdateResidentDTO } from "@modules/residents/dtos/IUpdateResidentDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
-import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
+import { ValidateCpfAndCrmUpdate } from "@shared/utils/ValidateCpfAndCrmUpdate";
 
 @injectable()
 class UpdateResidentUseCase {
@@ -21,9 +21,9 @@ class UpdateResidentUseCase {
       throw new AppError("Resident does not exists!");
     }
 
-    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+    const validateCpfAndCrmUpdate = container.resolve(ValidateCpfAndCrmUpdate);
 
-    await validateCpfAndCrm.execute(data.crm, data.cpf);
+    await validateCpfAndCrmUpdate.execute(data.crm, data.cpf, id);
 
     data = {
       id: id,

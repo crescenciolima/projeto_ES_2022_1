@@ -4,7 +4,7 @@ import { IMedicsRepository } from "@modules/medics/repositories/IMedicsRepositor
 import { IUpdateMedicDTO } from "@modules/medics/dtos/IUpdateMedicDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
-import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
+import { ValidateCpfAndCrmUpdate } from "@shared/utils/ValidateCpfAndCrmUpdate";
 
 @injectable()
 class UpdateMedicUseCase {
@@ -21,9 +21,9 @@ class UpdateMedicUseCase {
       throw new AppError("Medic does not exists!");
     }
 
-    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+    const validateCpfAndCrmUpdate = container.resolve(ValidateCpfAndCrmUpdate);
 
-    await validateCpfAndCrm.execute(data.crm, data.cpf);
+    await validateCpfAndCrmUpdate.execute(data.crm, data.cpf, id);
 
     data = {
       id: id,

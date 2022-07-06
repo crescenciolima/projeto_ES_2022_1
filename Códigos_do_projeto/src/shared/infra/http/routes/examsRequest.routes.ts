@@ -5,7 +5,7 @@ import { ListExamRequestsController } from "@modules/examsRequest/useCases/listE
 import { UpdateExamRequestController } from "@modules/examsRequest/useCases/updateExamRequest/UpdateExamRequestController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { GetExamRequestByIdController } from "@modules/examsRequest/useCases/GetExamRequestById/GetExamRequestByIdController";
+import { GetExamRequestByIdController } from "@modules/examsRequest/useCases/getExamRequestById/GetExamRequestByIdController";
 
 const examRequestsRoutes = Router();
 

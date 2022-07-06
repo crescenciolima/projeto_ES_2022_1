@@ -4,7 +4,7 @@ import { ensureAuthenticated } from "@shared/infra/http/middlewares/ensureAuthen
 import { ListResidentsController } from "@modules/residents/useCases/listResident/ListResidentController";
 import { DeleteResidentController } from "@modules/residents/useCases/deleteResident/DeleteResidentController";
 import { UpdateResidentController } from "@modules/residents/useCases/updateResident/UpdateResidentController";
-import { GetResidentByIdController } from "@modules/residents/useCases/GetResidentById/GetResidentByIdController";
+import { GetResidentByIdController } from "@modules/residents/useCases/getResidentById/GetResidentByIdController";
 
 const residentsRoutes = Router();
 

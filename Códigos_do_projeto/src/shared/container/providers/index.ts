@@ -19,5 +19,5 @@ const diskStorage = {
 
 container.registerSingleton<IStorageProvider>(
   "StorageProvider",
-  diskStorage.local
+  diskStorage.s3
 );

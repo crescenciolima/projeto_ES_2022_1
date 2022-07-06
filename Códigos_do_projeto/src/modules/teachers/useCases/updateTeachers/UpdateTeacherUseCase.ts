@@ -4,7 +4,7 @@ import { ITeachersRepository } from "@modules/teachers/repositories/ITeachersRep
 import { IUpdateTeacherDTO } from "@modules/teachers/dtos/IUpdateTeacherDTO";
 import { hash } from "bcrypt";
 import { AppError } from "@shared/errors/AppError";
-import { ValidateCpfAndCrm } from "@shared/utils/ValidateCpfAndCrm";
+import { ValidateCpfAndCrmUpdate } from "@shared/utils/ValidateCpfAndCrmUpdate";
 
 @injectable()
 class UpdateTeacherUseCase {
@@ -21,9 +21,9 @@ class UpdateTeacherUseCase {
       throw new AppError("Teacher does not exists!");
     }
 
-    const validateCpfAndCrm = container.resolve(ValidateCpfAndCrm);
+    const validateCpfAndCrmUpdate = container.resolve(ValidateCpfAndCrmUpdate);
 
-    await validateCpfAndCrm.execute(data.crm, data.cpf);
+    await validateCpfAndCrmUpdate.execute(data.crm, data.cpf, id);
 
     data = {
       id: id,

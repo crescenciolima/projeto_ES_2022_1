@@ -10,7 +10,7 @@ import { UpdateExamAttachmentController } from "@modules/exams/useCases/updateEx
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 import uploadConfig from "@config/upload";
-import { GetExamByIdController } from "@modules/exams/useCases/GetExamById/GetExamByIdController";
+import { GetExamByIdController } from "@modules/exams/useCases/getExamById/GetExamByIdController";
 
 const examsRoutes = Router();
 

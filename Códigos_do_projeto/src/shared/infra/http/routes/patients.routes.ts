@@ -5,7 +5,7 @@ import { DeletePatientController } from "@modules/patients/useCases/deletePatien
 import { UpdatePatientController } from "@modules/patients/useCases/updatePatient/UpdatePatientController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { GetPatientByIdController } from "@modules/patients/useCases/GetPatientById/GetPatientByIdController";
+import { GetPatientByIdController } from "@modules/patients/useCases/getPatientById/GetPatientByIdController";
 
 const patientsRoutes = Router();
 

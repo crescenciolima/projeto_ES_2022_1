@@ -4,7 +4,7 @@ import { ListMedicsController } from "@modules/medics/useCases/listMedics/ListMe
 import { DeleteMedicController } from "@modules/medics/useCases/deleteMedic/DeleteMedicController";
 import { UpdateMedicController } from "@modules/medics/useCases/updateMedic/UpdateMedicController";
 import { ensureAuthenticated } from "@shared/infra/http/middlewares/ensureAuthenticated";
-import { GetMedicByIdController } from "@modules/medics/useCases/GetMedicById/GetMedicByIdController";
+import { GetMedicByIdController } from "@modules/medics/useCases/getMedicById/GetMedicByIdController";
 
 const medicsRoutes = Router();
 
