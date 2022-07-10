@@ -30,7 +30,7 @@ examsRoutes.post("/", ensureAuthenticated, createExamController.handle);
 examsRoutes.delete("/:id", ensureAuthenticated, deleteExamController.handle);
 examsRoutes.put("/:id", ensureAuthenticated, updateExamController.handle);
 examsRoutes.patch(
-  "/attachment/:id",
+  "/attachment",
   ensureAuthenticated,
   uploadAttachment.single("exam"),
   updateExamAttachmentController.handle

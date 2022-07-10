@@ -4,16 +4,15 @@ import { UpdateExamAttachmentUseCase } from "./UpdateExamAttachmentUseCase";
 
 class UpdateExamAttachmentController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
     const attachment = request.file.filename;
 
     const updateExamAttachmentUseCase = container.resolve(
       UpdateExamAttachmentUseCase
     );
 
-    await updateExamAttachmentUseCase.execute({ exam_id: id, attachment });
+    const attachmentURL = await updateExamAttachmentUseCase.execute(attachment);
 
-    return response.status(204).send();
+    return response.json(attachmentURL);
   }
 }
 

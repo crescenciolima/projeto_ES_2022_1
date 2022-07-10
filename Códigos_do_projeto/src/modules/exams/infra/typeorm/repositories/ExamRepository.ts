@@ -46,6 +46,10 @@ class ExamsRepository implements IExamsRepository {
     return exam;
   }
 
+  async updateExamAttachment(attachment: string): Promise<String> {
+    return attachment;
+  }
+
   async delete(id: string): Promise<void> {
     const exam = await this.repository.findOne({ id });
 
