@@ -6,6 +6,7 @@ import { UpdateExamRequestController } from "@modules/examsRequest/useCases/upda
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { GetExamRequestByIdController } from "@modules/examsRequest/useCases/getExamRequestById/GetExamRequestByIdController";
+import { GetExamRequestByIdAllController } from "@modules/examsRequest/useCases/getExamRequestByIdAll/GetExamRequestByIdAllController";
 
 const examRequestsRoutes = Router();
 
@@ -14,6 +15,7 @@ const listExamRequests = new ListExamRequestsController();
 const deleteExamRequest = new DeleteExamRequestController();
 const updateExamRequest = new UpdateExamRequestController();
 const getExamRequestByIdController = new GetExamRequestByIdController();
+const getExamRequestByIdAllController = new GetExamRequestByIdAllController();
 
 examRequestsRoutes.post("/", ensureAuthenticated, createExamRequest.handle);
 examRequestsRoutes.get("/", ensureAuthenticated, listExamRequests.handle);
@@ -27,6 +29,11 @@ examRequestsRoutes.get(
   "/:id",
   ensureAuthenticated,
   getExamRequestByIdController.handle
+);
+examRequestsRoutes.get(
+  "/all/:id",
+  ensureAuthenticated,
+  getExamRequestByIdAllController.handle
 );
 
 export { examRequestsRoutes };

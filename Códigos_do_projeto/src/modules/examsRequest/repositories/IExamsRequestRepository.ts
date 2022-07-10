@@ -9,8 +9,8 @@ interface IExamsRequestRepository {
     data: IUpdateExamRequestDTO
   ): Promise<ExamRequest>;
   delete(id: string): Promise<void>;
-  getAll(): Promise<ExamRequest[]>;
   findById(id: string): Promise<ExamRequest>;
+  findByIdAll(id: string): Promise<ExamRequest[]>;
 }
 
 export { IExamsRequestRepository };

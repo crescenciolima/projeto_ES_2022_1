@@ -56,13 +56,15 @@ class ExamsRepository implements IExamsRepository {
     await this.repository.delete(id);
   }
 
-  async getAll(): Promise<Exam[]> {
-    const exams = await this.repository.find();
-    return exams;
-  }
-
   async findById(id: string): Promise<Exam> {
     const exam = await this.repository.findOne({ id });
+    return exam;
+  }
+
+  async findByIdAll(id: string): Promise<Exam[]> {
+    const exam = await this.repository.find({
+      where: { examRequest_id: id },
+    });
     return exam;
   }
 }

@@ -53,13 +53,15 @@ class ExamsRequestRepository implements IExamsRequestRepository {
     await this.repository.delete(id);
   }
 
-  async getAll(): Promise<ExamRequest[]> {
-    const examRequests = await this.repository.find();
-    return examRequests;
-  }
-
   async findById(id: string): Promise<ExamRequest> {
     const examRequest = await this.repository.findOne({ id });
+    return examRequest;
+  }
+
+  async findByIdAll(id: string): Promise<ExamRequest[]> {
+    const examRequest = await this.repository.find({
+      where: { patient_id: id },
+    });
     return examRequest;
   }
 }

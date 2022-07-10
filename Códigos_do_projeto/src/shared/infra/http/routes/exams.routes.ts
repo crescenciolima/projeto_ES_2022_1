@@ -11,6 +11,7 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 import uploadConfig from "@config/upload";
 import { GetExamByIdController } from "@modules/exams/useCases/getExamById/GetExamByIdController";
+import { GetExamByIdAllController } from "@modules/exams/useCases/getExamByIdAll/GetExamByIdAllController";
 
 const examsRoutes = Router();
 
@@ -22,6 +23,7 @@ const deleteExamController = new DeleteExamController();
 const updateExamController = new UpdateExamController();
 const updateExamAttachmentController = new UpdateExamAttachmentController();
 const getExamByIdController = new GetExamByIdController();
+const getExamByIdAllController = new GetExamByIdAllController();
 
 examsRoutes.post("/", ensureAuthenticated, createExamController.handle);
 examsRoutes.get("/", ensureAuthenticated, listExamsController.handle);
@@ -34,5 +36,10 @@ examsRoutes.patch(
   updateExamAttachmentController.handle
 );
 examsRoutes.get("/:id", ensureAuthenticated, getExamByIdController.handle);
+examsRoutes.get(
+  "/all/:id",
+  ensureAuthenticated,
+  getExamByIdAllController.handle
+);
 
 export { examsRoutes };
