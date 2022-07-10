@@ -26,7 +26,7 @@ const getExamByIdController = new GetExamByIdController();
 const getExamByIdAllController = new GetExamByIdAllController();
 
 examsRoutes.post("/", ensureAuthenticated, createExamController.handle);
-examsRoutes.get("/", ensureAuthenticated, listExamsController.handle);
+// examsRoutes.get("/", ensureAuthenticated, listExamsController.handle);
 examsRoutes.delete("/:id", ensureAuthenticated, deleteExamController.handle);
 examsRoutes.put("/:id", ensureAuthenticated, updateExamController.handle);
 examsRoutes.patch(

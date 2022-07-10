@@ -18,7 +18,7 @@ const getExamRequestByIdController = new GetExamRequestByIdController();
 const getExamRequestByIdAllController = new GetExamRequestByIdAllController();
 
 examRequestsRoutes.post("/", ensureAuthenticated, createExamRequest.handle);
-examRequestsRoutes.get("/", ensureAuthenticated, listExamRequests.handle);
+// examRequestsRoutes.get("/", ensureAuthenticated, listExamRequests.handle);
 examRequestsRoutes.delete(
   "/:id",
   ensureAuthenticated,
