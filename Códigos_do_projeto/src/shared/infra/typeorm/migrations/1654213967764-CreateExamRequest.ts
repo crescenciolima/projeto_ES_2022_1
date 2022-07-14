@@ -39,7 +39,7 @@ export class CreateExamRequest1654213967764 implements MigrationInterface {
             referencedTableName: "patients",
             referencedColumnNames: ["id"],
             columnNames: ["patient_id"],
-            onDelete: "SET NULL",
+            onDelete: "CASCADE",
             onUpdate: "SET NULL",
           },
         ],

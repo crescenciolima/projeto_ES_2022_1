@@ -33,7 +33,7 @@ class Exam {
   @Column()
   examRequest_id: string;
 
-  @ManyToOne(() => ExamRequest)
+  @ManyToOne(() => ExamRequest, { onDelete: "CASCADE" })
   @JoinColumn({ name: "examRequest_id" })
   examRequest: ExamRequest;
 

@@ -26,7 +26,7 @@ class ExamRequest {
   @Column()
   patient_id: string;
 
-  @ManyToOne(() => Patient)
+  @ManyToOne(() => Patient, { onDelete: "CASCADE" })
   @JoinColumn({ name: "patient_id" })
   patient: Patient;
 
