@@ -1,4 +1,10 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity("medics")
@@ -22,7 +28,7 @@ class Medic {
   cpf: string;
 
   @Column()
-  password: string
+  password: string;
 
   @Column()
   marital_status: string;
@@ -56,9 +62,9 @@ class Medic {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4()
+      this.id = uuidV4();
     }
   }
 }
 
-export { Medic }
+export { Medic };

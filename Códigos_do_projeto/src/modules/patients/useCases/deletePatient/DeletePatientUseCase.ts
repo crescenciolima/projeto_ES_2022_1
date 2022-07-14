@@ -7,17 +7,17 @@ class DeletePatientUseCase {
   constructor(
     @inject("PatientsRepository")
     private patientsRepository: IPatientsRepository
-  ) { }
+  ) {}
 
   async execute(id: string): Promise<void> {
-    const patient = await this.patientsRepository.findById(id)
+    const patient = await this.patientsRepository.findById(id);
 
     if (!patient) {
-      throw new AppError("Patient does not exists!")
+      throw new AppError("Patient does not exists!");
     }
 
-    await this.patientsRepository.delete(id)
+    await this.patientsRepository.delete(id);
   }
 }
 
-export { DeletePatientUseCase }
+export { DeletePatientUseCase };

@@ -16,4 +16,4 @@ interface IUpdateMedicDTO {
   phone_number?: string;
 }
 
-export { IUpdateMedicDTO }
+export { IUpdateMedicDTO };

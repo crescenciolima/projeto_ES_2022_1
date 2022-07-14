@@ -1,15 +1,15 @@
-import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory"
-import { AppError } from "@shared/errors/AppError"
-import { DeletePatientUseCase } from "./DeletePatientUseCase"
+import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+import { DeletePatientUseCase } from "./DeletePatientUseCase";
 
-let deletePatientUseCase: DeletePatientUseCase
-let patientsRepositoryInMemory: PatientsRepositoryInMemory
+let deletePatientUseCase: DeletePatientUseCase;
+let patientsRepositoryInMemory: PatientsRepositoryInMemory;
 
 describe("Delete patient", () => {
   beforeEach(() => {
-    patientsRepositoryInMemory = new PatientsRepositoryInMemory()
-    deletePatientUseCase = new DeletePatientUseCase(patientsRepositoryInMemory)
-  })
+    patientsRepositoryInMemory = new PatientsRepositoryInMemory();
+    deletePatientUseCase = new DeletePatientUseCase(patientsRepositoryInMemory);
+  });
 
   it("should be able to delete a patient", async () => {
     const patient = await patientsRepositoryInMemory.create({
@@ -23,15 +23,16 @@ describe("Delete patient", () => {
       state: "test",
       city: "test",
       gender: "test",
-      phone_number: "1000"
-    })
-    await deletePatientUseCase.execute(patient.id)
+      phone_number: "1000",
+    });
+    await deletePatientUseCase.execute(patient.id);
 
-    expect(deletePatientUseCase).not.toContainEqual(patient)
-  })
+    expect(deletePatientUseCase).not.toContainEqual(patient);
+  });
 
   it("should not be able to delete an non-existing patient", async () => {
-    await expect(deletePatientUseCase.execute("fakeID")
-    ).rejects.toEqual(new AppError("Patient does not exists!"))
-  })
-})
+    await expect(deletePatientUseCase.execute("fakeID")).rejects.toEqual(
+      new AppError("Patient does not exists!")
+    );
+  });
+});

@@ -1,17 +1,16 @@
-import { IUpdatePatientDTO } from "@modules/patients/dtos/IUpdatePatientDTO"
-import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory"
-import { AppError } from "@shared/errors/AppError"
-import { UpdatePatientUseCase } from "./UpdatePatientUseCase"
+import { IUpdatePatientDTO } from "@modules/patients/dtos/IUpdatePatientDTO";
+import { PatientsRepositoryInMemory } from "@modules/patients/repositories/in-memory/PatientsRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+import { UpdatePatientUseCase } from "./UpdatePatientUseCase";
 
-let updatePatientUseCase: UpdatePatientUseCase
-let patientsRepositoryInMemory: PatientsRepositoryInMemory
+let updatePatientUseCase: UpdatePatientUseCase;
+let patientsRepositoryInMemory: PatientsRepositoryInMemory;
 
 describe("Update patient", () => {
   beforeEach(() => {
-    patientsRepositoryInMemory = new PatientsRepositoryInMemory()
-    updatePatientUseCase = new UpdatePatientUseCase(patientsRepositoryInMemory)
-
-  })
+    patientsRepositoryInMemory = new PatientsRepositoryInMemory();
+    updatePatientUseCase = new UpdatePatientUseCase(patientsRepositoryInMemory);
+  });
 
   it("should be able to update a patient", async () => {
     const patient = await patientsRepositoryInMemory.create({
@@ -25,8 +24,8 @@ describe("Update patient", () => {
       city: "test",
       state: "test",
       gender: "test",
-      phone_number: "1000"
-    })
+      phone_number: "1000",
+    });
 
     const data: IUpdatePatientDTO = {
       id: patient.id,
@@ -41,15 +40,15 @@ describe("Update patient", () => {
       state: "test",
       gender: "test",
       phone_number: "1000",
-    }
+    };
 
-    const response = await updatePatientUseCase.execute(patient.id, data)
+    const response = await updatePatientUseCase.execute(patient.id, data);
 
-    expect(response.name).toEqual(data.name)
-    expect(response.ethnicity).toEqual(data.ethnicity)
-    expect(response.nationality).toEqual(data.nationality)
-    expect(response.cpf).toEqual(data.cpf)
-  })
+    expect(response.name).toEqual(data.name);
+    expect(response.ethnicity).toEqual(data.ethnicity);
+    expect(response.nationality).toEqual(data.nationality);
+    expect(response.cpf).toEqual(data.cpf);
+  });
 
   it("should not be able to update an non-existing patient", async () => {
     const patient = await patientsRepositoryInMemory.create({
@@ -63,8 +62,8 @@ describe("Update patient", () => {
       city: "test",
       state: "test",
       gender: "test",
-      phone_number: "1000"
-    })
+      phone_number: "1000",
+    });
 
     const data: IUpdatePatientDTO = {
       id: patient.id,
@@ -79,8 +78,9 @@ describe("Update patient", () => {
       state: "test",
       gender: "test",
       phone_number: "1000",
-    }
-    await expect(updatePatientUseCase.execute("test", data)
-    ).rejects.toEqual(new AppError("Patient does not exists!"))
-  })
-})
+    };
+    await expect(updatePatientUseCase.execute("test", data)).rejects.toEqual(
+      new AppError("Patient does not exists!")
+    );
+  });
+});

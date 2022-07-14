@@ -1,4 +1,3 @@
-
 interface IDateProvider {
   compareInHours(start_date: Date, end_date: Date): number;
   convertToUTC(date: Date): string;
@@ -9,4 +8,4 @@ interface IDateProvider {
   compareIfBefore(start_date: Date, end_date: Date): boolean;
 }
 
-export { IDateProvider }
+export { IDateProvider };

@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreatePatients1652747550287 implements MigrationInterface {
-
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -10,76 +9,74 @@ export class CreatePatients1652747550287 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
-            isPrimary: true
+            isPrimary: true,
           },
           {
             name: "name",
-            type: "varchar"
+            type: "varchar",
           },
           {
             name: "ethnicity",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "nationality",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "cpf",
             type: "varchar",
-            isUnique: true
+            isUnique: true,
           },
           {
             name: "birth_date",
-            type: "Date"
+            type: "Date",
           },
           {
             name: "marital_status",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "address",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "state",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "city",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "gender",
-            type: "varchar"
+            type: "varchar",
           },
           {
             name: "phone_number",
             type: "varchar",
-            isNullable: true
+            isNullable: true,
           },
           {
             name: "created_at",
             type: "timestamp",
-            default: "now()"
+            default: "now()",
           },
           {
             name: "updated_at",
             type: "timestamp",
-            isNullable: true
-          }
-        ]
+            isNullable: true,
+          },
+        ],
       })
-    )
+    );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
-  }
-
+  public async down(queryRunner: QueryRunner): Promise<void> {}
 }
